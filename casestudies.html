@@ -8,8 +8,14 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
     /* Base styles */
-    body {
-            
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow-x: hidden; /* prevents horizontal scroll */
+    }
+
+    body {      
       font-family: Arial, sans-serif;
       margin: 0;
       background-color: #f4f4f9;
@@ -21,8 +27,7 @@
       display: flex;
       flex-direction: column;
       background-size: contain;
-      background-size: 30%;
-      
+      background-size: 30%;   
     }
 
 /* For utilizing a background image and controlling opacity of just that image */
@@ -83,6 +88,8 @@
 
     main {
       flex: 1; /* Makes content area stretch to push footer down */
+      display: flex;
+      flex-direction: column;
     }
 
     .case-study {
@@ -91,6 +98,8 @@
       margin-top: 10px;
       padding: 0.5rem;
       background-color: #ffffff;
+      box-sizing: border-box;
+      width: 100%;
     }
 
     .case-study h1 {
@@ -112,17 +121,25 @@
       transform: rotate(-90deg);
     }
 
+    .case-study.collapsed {
+    padding-bottom: 0; /* remove extra space at bottom */
+    padding-top: 0;
+}
+
+
     .case-content {
       overflow: hidden;
       max-height: 0;
       transition: max-height 0.5s ease, opacity 0.3s ease;
       opacity: 0;
+      padding: 0;
       color: #000000;
     }
 
     .case-study.expanded .case-content {
-      max-height: 2000px;
+      max-height: 5000px; /* raised from 2000px to ensure long content shows */
       opacity: 1;
+      padding-top: 1rem;
     }
 
     h2 {
@@ -146,6 +163,16 @@
       margin-bottom: 0.5rem;
     }
 
+      /* Responsive Image */
+    .case-image {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 1rem auto;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+
     /* Footer */
     .footer {
       background-color: #222;
@@ -153,6 +180,30 @@
       text-align: center;
       padding: 1rem 0;
     }
+
+ @media (max-width: 768px) {
+      nav ul {
+        flex-direction: column;
+      }
+
+      .case-study.collapsed h1 {
+    font-size: 1.2rem; /* smaller font size for mobile */
+    padding: 0.75rem 0; /* optional: reduce padding too */
+  }
+
+  .case-study.collapsed h1 {
+    font-size: 1.1rem;
+    line-height: 1.3;
+  }
+  .case-study.expanded h1 span {
+    font-size: 1.4rem; /* Adjust to your desired size */
+  }
+
+  .case-study.expanded h1 .icon {
+    font-size: 1.3rem; /* Smaller chevron icon */
+  }
+
+ }
   </style>
 </head>
 <body>
@@ -177,7 +228,7 @@
     <!-- CASE STUDY 1 -->
     <section class="case-study ux-ui-design generative-ai collapsed">
       <h1>
-        <span>Developer-Centered Intranet Search</span>
+        <span>Increased search events by 194%</span>
         <i class="fas fa-chevron-down icon"></i>
       </h1>
       <div class="case-content">
@@ -185,9 +236,20 @@
         <p><strong>What:</strong> UX, UI design, implementation of generative AI</p>
         <p><strong>Result:</strong> Increased searches by 194% over one year</p>
         <h2><i class="fa-solid fa-lightbulb"></i> Project Summary</h2>
-        <p>We created a developer-specific search engine to ensure developers could easily find relevant information...</p>
+        <p>We created a developer specific search engine to ensure developers could easily find the relevant information they were searching for.  
+          This meant indexing more sites than those used by the existing company intranet search site and using more dynamic filtering for the 
+          returned results.  After the success of our Beta launch, we received so many requests about how to be included in the search results that 
+          we added the process to our FAQ page.  This search engine was also the first project I worked on that incorporated generative AI and would 
+          serve as the template for future generative AI projects.</p>
+          <h3>Home Page:</h3>
+          <img src="assets/images/Search_Home.png" alt="Home Page" class="case-image" />
+          <h3>Results Page:</h3>
+          <img src="assets/images/Search_Results.png" alt="Returned Results" class="case-image" />
         <h2><i class="fa-solid fa-chart-line"></i> Outcome Statement</h2>
-        <p>Search events increased by 194% over a year. Developers used the site more than the general intranet.</p>
+        <p>The creation of a developer specific search tool led to an increase of search events by 194% over the course of one year.  Devs no longer 
+          had to rely on a company focused intranet site.  The dev specific search site indexed data from not only more sources, but the sources were 
+          centered on information specific to developers.</p>
+          <img src="assets/images/Search_Traffic.png" alt="Search Analytics" class="case-image" />
         <h2><i class="fa-solid fa-forward"></i> Fast Track to Relevant Information</h2>
         <p>The new search engine used smart filters, search suggestions, relevance sorting, and mobile optimization.</p>
         <h2><i class="fa-solid fa-user-gear"></i> My Role</h2>
@@ -208,7 +270,7 @@
     <!-- CASE STUDY 2 -->
     <section class="case-study ux-ui-design generative-ai collapsed">
       <h1>
-        <span>Decreased Ticket Submissions with Generative AI</span>
+        <span>Decreased ticket submission by 30%</span>
         <i class="fas fa-chevron-down icon"></i>
       </h1>
       <div class="case-content">
@@ -231,7 +293,7 @@
     <!-- CASE STUDY 3 -->
     <section class="case-study ux-research collapsed">
       <h1>
-        <span>UX Principles for Workforce eXperience Technology</span>
+        <span>Created UX Principles for Organization</span>
         <i class="fas fa-chevron-down icon"></i>
       </h1>
       <div class="case-content">
