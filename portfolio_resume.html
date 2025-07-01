@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Resume – Pamela Tholan</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    :root {
+      --primary-color: #2c3e50;
+      --accent-color: #1abc9c;
+      --text-color: #333;
+      --bg-color: #fff;
+      --font-main: system-ui, sans-serif;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      font-family: var(--font-main);
+      line-height: 1.6;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    nav {
+      background: #f8f8f8;
+      padding: 1rem;
+      border-bottom: 1px solid #ddd;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+      padding: 0;
+      margin: 0;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+    }
+
+    main {
+      flex: 1;
+      padding: 2rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    h1, h2, h3 {
+      color: var(--primary-color);
+      margin-bottom: 0.5rem;
+    }
+
+    h1 {
+      font-size: 2rem;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+      border-bottom: 2px solid var(--accent-color);
+      padding-bottom: 0.25rem;
+      margin-top: 2rem;
+    }
+
+    h3 {
+      font-size: 1.2rem;
+      margin-top: 1.5rem;
+    }
+
+    .contact {
+      margin-bottom: 1rem;
+      font-size: 0.95rem;
+    }
+
+    .contact a {
+      color: var(--accent-color);
+      text-decoration: none;
+    }
+
+    .contact a:hover {
+      text-decoration: underline;
+    }
+
+    .section {
+      margin-bottom: 2rem;
+    }
+
+    ul {
+      padding-left: 1.2rem;
+      margin-top: 0.5rem;
+    }
+
+    li {
+      margin-bottom: 0.5rem;
+    }
+
+    .job-title {
+      font-weight: bold;
+    }
+
+    .job-location {
+      font-style: italic;
+      font-size: 0.9rem;
+      color: #666;
+    }
+
+    .button-wrapper {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 1rem;
+    }
+
+    .download-button {
+      padding: 0.5rem 1rem;
+      background-color: var(--accent-color);
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+      white-space: nowrap;
+    }
+
+    .download-button:hover {
+      background-color: #16a085;
+    }
+
+    .footer {
+      background-color: #222;
+      color: #fff;
+      text-align: center;
+      padding: 1rem 0;
+    }
+
+    /* Responsive tweak */
+    @media (max-width: 600px) {
+      .button-wrapper {
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <!-- <li><a href="casestudies.html">Case Studies</a></li> -->
+    </ul>
+  </nav>
+
+  <main>
+
+    <div class="button-wrapper">
+      <a href="assets/files/Pamela Tholan Resume.pdf" download="Pamela_Tholan_Resume.pdf" class="download-button">Download PDF Resume</a>
+    </div>
+
+    <h1>Pamela Tholan</h1>
+    <div class="contact">
+      Chadds Ford, PA | 267.716.2275<br>
+      <a href="mailto:pamelatholan@yahoo.com">pamelatholan@yahoo.com</a> |
+      <a href="https://www.linkedin.com/in/pamela-tholan/" target="_blank">LinkedIn</a> |
+      <a href="https://yourportfolio.com" target="_blank">Portfolio</a>
+    </div>
+
+    <p>
+      Results-driven professional with strengths in troubleshooting, communication, organization and customer satisfaction. Passionate about technology and learning. Positioned well to be a team player drawing on past implementation and project management experience and applying adept multi-tasking skills to future opportunities.
+    </p>
+
+    <section class="section">
+      <h2>Professional Skills</h2>
+      UX research, UI design, Project Management, Communication, Problem Solving, Creativity
+    </section>
+
+    <section class="section">
+      <h2>Technical Skills</h2>
+      <strong>Software:</strong> Windows, MacOS, Adobe Suite, Figma, Microsoft Office, Smartsheet, Jira, VS Code, Salesforce, ServiceNow, Rally<br>
+      <strong>Languages:</strong> HTML, CSS, JavaScript<br>
+      <strong>Frameworks:</strong> Bootstrap, React Bootstrap<br>
+      <strong>Deployment:</strong> Heroku, GitHub Pages<br>
+      <strong>Version Control:</strong> Git
+    </section>
+
+    <section class="section">
+      <h2>Professional Experience</h2>
+
+      <h3>Comcast, Philadelphia, PA <span class="job-location">| Nov 2021 – Present</span></h3>
+      <div class="job-title">Project Manager II</div>
+      <ul>
+        <li>Support projects for LINCS, XPE, ZETA, Careers Site and GTO Site</li>
+        <li>Develop, implement, and track project plans</li>
+        <li>Serve as liaison between Business partners and Development teams</li>
+        <li>Provide updates using Smartsheet</li>
+      </ul>
+      <div class="job-title">UX/UI Design Contributions</div>
+      <ul>
+        <li>Designed Chat-GPT widgets/loaders for XPE, ComcastNow, AskHRSS</li>
+        <li>Redesigned myExpense and Search Comcast interfaces</li>
+        <li>Enhanced XPE login/landing pages</li>
+        <li>Maintained consistency in ZETA CMS design components</li>
+      </ul>
+
+      <h3>Comcast (Contractor), Philadelphia, PA <span class="job-location">| Sep 2020 – Nov 2021</span></h3>
+      <div class="job-title">Project Manager II</div>
+      <ul>
+        <li>Led MyCovidScreen and RTO projects</li>
+        <li>Managed backlog in Rally, submitted releases in JIRA</li>
+        <li>Reported technology status to Executive Leadership</li>
+      </ul>
+
+      <h3>Telerx, Horsham, PA <span class="job-location">| May 2008 – July 2020</span></h3>
+      <div class="job-title">Project Manager II (Nov 2018 – Jul 2020)</div>
+      <ul>
+        <li>Managed CRM upgrades and Salesforce migrations</li>
+        <li>Gathered system/user requirements, created IVR call flows in Visio</li>
+      </ul>
+      <div class="job-title">Other Roles (2008–2018)</div>
+      <ul>
+        <li>Procurement Specialist, Help Desk Analyst, Facilities Specialist, Receptionist, and more</li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <h2>Education & Credentials</h2>
+      <ul>
+        <li>Associate of Science, Graphic Design – The Art Institute of Philadelphia</li>
+      </ul>
+      <strong>Professional Development:</strong>
+      <ul>
+        <li>Visual Elements of UI Design – CalArts (Coursera)</li>
+        <li>Full Stack Web Development – UPENN Coding Bootcamp</li>
+        <li>SAP Training – SAPTEC, ADM100, ADM900, ADM950</li>
+      </ul>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <p>© 2025 Pam Tholan. All rights reserved.</p>
+  </footer>
+</body>
+</html>

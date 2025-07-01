@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UX Case Studies – Comcast</title>
+  <!-- <link rel="stylesheet" href="styles.css" /> -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    /* Base styles */
+    body {
+            
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #f4f4f9;
+      /* background-image: url('assets/images/logo_notext.png'); */
+      background-size: cover; 
+      background-position: center center; 
+      background-repeat:repeat-x; 
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background-size: contain;
+      background-size: 30%;
+      
+    }
+
+/* For utilizing a background image and controlling opacity of just that image */
+
+  /* body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('assets/images/logo_notext.png');
+  background-repeat: repeat-x repeat-y;
+  background-position: center center;
+  background-size: 15%; */
+  /* opacity: 0.1;             This makes only the image transparent */
+  /* z-index: 0; */
+  /* pointer-events: none;    /* Prevents image layer from blocking interactions */
+  /* }
+
+/* for centering image */
+
+/* body > * {
+  position: relative;
+  z-index: 1;
+} */
+
+    nav {
+      background: #f8f8f8;
+      padding: 1rem;
+      border-bottom: 1px solid #ddd;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+      padding: 0;
+      margin: 0;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+    }
+
+    .filter-bar {
+      max-width: 800px;
+      margin: 2rem auto 0;
+      padding: 0 2rem;
+    }
+
+    .filter-bar select {
+      padding: 0 0.5rem;
+      font-size: 1rem;
+    }
+
+    main {
+      flex: 1; /* Makes content area stretch to push footer down */
+    }
+
+    .case-study {
+      max-width: 800px;
+      margin: 0 auto;
+      margin-top: 10px;
+      padding: 0.5rem;
+      background-color: #ffffff;
+    }
+
+    .case-study h1 {
+      font-size: 1.75rem;
+      color: #000000;
+      margin: 0;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 0;
+    }
+
+    .case-study .icon {
+      transition: transform 0.3s ease;
+    }
+
+    .case-study.collapsed .icon {
+      transform: rotate(-90deg);
+    }
+
+    .case-content {
+      overflow: hidden;
+      max-height: 0;
+      transition: max-height 0.5s ease, opacity 0.3s ease;
+      opacity: 0;
+      color: #000000;
+    }
+
+    .case-study.expanded .case-content {
+      max-height: 2000px;
+      opacity: 1;
+    }
+
+    h2 {
+      font-size: 1.25rem;
+      margin-top: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    h2 .fa {
+      color: #888;
+      min-width: 1em;
+    }
+
+    ul {
+      padding-left: 1.2rem;
+    }
+
+    li {
+      margin-bottom: 0.5rem;
+    }
+
+    /* Footer */
+    .footer {
+      background-color: #222;
+      color: #fff;
+      text-align: center;
+      padding: 1rem 0;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <!-- <li><a href="#">Case Studies</a></li> -->
+    </ul>
+  </nav>
+
+  <div class="filter-bar">
+    <label for="filter">Filter by Topic:</label>
+    <select id="filter">
+      <option value="all">All</option>
+      <option value="generative-ai">Generative AI</option>
+      <option value="ux-research">UX Research</option>
+      <option value="ux-ui-design">UX/UI Design</option>
+    </select>
+  </div>
+
+  <main>
+    <!-- CASE STUDY 1 -->
+    <section class="case-study ux-ui-design generative-ai collapsed">
+      <h1>
+        <span>Developer-Centered Intranet Search</span>
+        <i class="fas fa-chevron-down icon"></i>
+      </h1>
+      <div class="case-content">
+        <p><strong>Who:</strong> Workforce eXperience Technology organization at Comcast</p>
+        <p><strong>What:</strong> UX, UI design, implementation of generative AI</p>
+        <p><strong>Result:</strong> Increased searches by 194% over one year</p>
+        <h2><i class="fa-solid fa-lightbulb"></i> Project Summary</h2>
+        <p>We created a developer-specific search engine to ensure developers could easily find relevant information...</p>
+        <h2><i class="fa-solid fa-chart-line"></i> Outcome Statement</h2>
+        <p>Search events increased by 194% over a year. Developers used the site more than the general intranet.</p>
+        <h2><i class="fa-solid fa-forward"></i> Fast Track to Relevant Information</h2>
+        <p>The new search engine used smart filters, search suggestions, relevance sorting, and mobile optimization.</p>
+        <h2><i class="fa-solid fa-user-gear"></i> My Role</h2>
+        <p>I handled UX/UI, improving clarity and functionality based on industry inspiration.</p>
+        <h2><i class="fa-solid fa-paintbrush"></i> Design Enhancements</h2>
+        <ul>
+          <li>Lines between results</li>
+          <li>Visible URLs</li>
+          <li>Enhanced filters</li>
+          <li>Decluttered layout</li>
+          <li>VPN and Beta tags</li>
+        </ul>
+        <h2><i class="fa-solid fa-bullseye"></i> Mandate</h2>
+        <p>We partnered with content teams to index high-value sources like Confluence pages.</p>
+      </div>
+    </section>
+
+    <!-- CASE STUDY 2 -->
+    <section class="case-study ux-ui-design generative-ai collapsed">
+      <h1>
+        <span>Decreased Ticket Submissions with Generative AI</span>
+        <i class="fas fa-chevron-down icon"></i>
+      </h1>
+      <div class="case-content">
+        <p><strong>Who:</strong> XPE Organization at Comcast</p>
+        <p><strong>What:</strong> New data ingest, implementation of generative AI, UX/UI redesign</p>
+        <p><strong>Result:</strong> 30% decrease in tickets submitted to XPE team</p>
+        <h2><i class="fa-solid fa-lightbulb"></i> Project Summary</h2>
+        <p>We designed a generative AI widget to answer employee questions about discounted products/services.</p>
+        <h2><i class="fa-solid fa-chart-line"></i> Outcome Statement</h2>
+        <p>Within the first month post-launch, ticket submissions dropped by 30%.</p>
+        <h2><i class="fa-solid fa-question-circle"></i> Immediate Answers to Questions</h2>
+        <p>The AI tool returned sourced responses and supported ongoing Q&A.</p>
+        <h2><i class="fa-solid fa-user-gear"></i> My Role</h2>
+        <p>I was both PM and UX/UI Designer. I led cross-functional coordination and designed the UI.</p>
+        <h2><i class="fa-solid fa-bullseye"></i> Mandate</h2>
+        <p>The goal was to reduce ticket load while handling authentication and dynamic data. I researched AI tools to guide design.</p>
+      </div>
+    </section>
+
+    <!-- CASE STUDY 3 -->
+    <section class="case-study ux-research collapsed">
+      <h1>
+        <span>UX Principles for Workforce eXperience Technology</span>
+        <i class="fas fa-chevron-down icon"></i>
+      </h1>
+      <div class="case-content">
+        <p><strong>Who:</strong> Workforce eXperience Technology organization at Comcast</p>
+        <p><strong>What:</strong> UX research</p>
+        <p><strong>Result:</strong> UX principles created for organization</p>
+        <h2><i class="fa-solid fa-lightbulb"></i> Project Summary</h2>
+        <p>We analyzed help desk feedback and vendor UX approaches to define foundational principles.</p>
+        <h2><i class="fa-solid fa-chart-line"></i> Outcome Statement</h2>
+        <p>Five principles were defined: intuitive usage, error prevention, reliability, expectation setting, and feedback.</p>
+        <h2><i class="fa-solid fa-sitemap"></i> Establishing UX as a Requirement</h2>
+        <p>52% of negative feedback came from usability issues. Vendor interviews confirmed UX priorities.</p>
+        <h2><i class="fa-solid fa-user-gear"></i> My Role</h2>
+        <p>I co-led interviews, synthesized findings, and wrote the first draft of the principles.</p>
+        <h2><i class="fa-solid fa-bullseye"></i> Mandate</h2>
+        <p>We aimed to make UX a requirement and embed it in future projects. These principles now guide all new work.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>© 2025 Pam Tholan. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Filter functionality
+    const filterSelect = document.getElementById('filter');
+    const caseStudies = document.querySelectorAll('.case-study');
+
+    filterSelect.addEventListener('change', () => {
+      const value = filterSelect.value;
+      caseStudies.forEach(section => {
+        const matches = value === 'all' || section.classList.contains(value);
+        section.style.display = matches ? 'block' : 'none';
+      });
+    });
+
+    // Expand/collapse sections
+    document.querySelectorAll('.case-study h1').forEach(header => {
+      header.addEventListener('click', () => {
+        const section = header.closest('.case-study');
+        section.classList.toggle('collapsed');
+        section.classList.toggle('expanded');
+      });
+    });
+  </script>
+</body>
+</html>
