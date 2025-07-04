@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>UX Case Studies – Comcast</title>
+  <title>UX Case Studies</title>
   <!-- <link rel="stylesheet" href="styles.css" /> -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
@@ -269,9 +269,11 @@
           <li>Enhanced filters</li>
           <li>Decluttered layout</li>
           <li>VPN tags</li>
+          <li>Mobile design</li>
         </ul>
         <img src="assets/images/Search_Results.png" alt="New Design" class="case-image" />
         <img src="assets/images/vpn tag.png" alt="VPN Tag" class="case-image" />
+        <img src="assets/images/search_mobile.png" alt="Mobile Design" class="case-image" />
 
         <h2>Outcome Statement</h2>
         <p>The creation of a developer specific search tool led to an increase of search events by 194% over the course of one year.  Devs no longer 
@@ -290,7 +292,7 @@
     <!-- CASE STUDY 2 -->
     <section class="case-study ux-ui-design generative-ai collapsed">
       <h1>
-        <span>Decreased ticket submission by 30%</span>
+        <span>Decreased ticket submission by 30% with Generative AI</span>
         <i class="fas fa-chevron-down icon"></i>
       </h1>
       <div class="case-content">
@@ -298,15 +300,43 @@
         <p><strong>What:</strong> New data ingest, implementation of generative AI, UX/UI redesign</p>
         <p><strong>Result:</strong> 30% decrease in tickets submitted to XPE team</p>
         <h2>Project Summary</h2>
-        <p>We designed a generative AI widget to answer employee questions about discounted products/services.</p>
-        <h2>Outcome Statement</h2>
-        <p>Within the first month post-launch, ticket submissions dropped by 30%.</p>
-        <h2>Immediate Answers to Questions</h2>
-        <p>The AI tool returned sourced responses and supported ongoing Q&A.</p>
-        <h2>My Role</h2>
-        <p>I was both PM and UX/UI Designer. I led cross-functional coordination and designed the UI.</p>
-        <h2>Mandate</h2>
-        <p>The goal was to reduce ticket load while handling authentication and dynamic data. I researched AI tools to guide design.</p>
+        <p>We designed a generative AI widget section featuring an open search and three clickable FAQs to guide users.  
+          The results page included cites sources, a feedback option and an open search bar as well as FAQ prompts that could be selected to continue asking questions.</p>
+        <p><strong>Before:</strong>  Employees searched the intranet or submitted tickets to get help, often waiting days for responses.</p>
+        <img src="assets/images/old_landing.png" alt="Old Landing Page" class="case-image" />
+        <p><strong>After:</strong>   A generative AI widget provided instant answers, with clickable FAQs, open search, citations and a feedback loop which significantly reduced helpdesk burden.</p>
+        <img src="assets/images/new_landing.png" alt="New Landing Page" class="case-image" />
+        <img src="assets/images/wizard_results.png" alt="Results Page" class="case-image" />
+        <h2>User Need: Immediate Answers to Questions</h2>
+        <p>The target users were company employees who had questions related to their discounted products and services, including but not limited to, 
+          how to sign-up for those services or how to change those services.</p>
+        <p>The XPE Wizard allowed for a self-service approach, allowing employees to ask questions instead of having to open a ticket or search the intranet.  
+          Success criteria was determined by citation clicks, feedback provided per returned result and if the Wizard was able to return a result.</p>
+        <img src="assets/images/dash.png" alt="Analytics" class="case-image" />
+          <h2>My Role: UX/UI Designer & Project Manager</h2>
+        <p>As the PM I coordinated across four teams to ensure timely delivery, built the project plan and ran weekly cross-functional syncs to monitor progress.
+            As the UX/UI designer I collaborated with stakeholders to define requirements, designed the widget and results interface and created a custom loader animation for the response flow.</p>
+        <img src="assets/images/Loader_whiteBG.gif" alt="Loader" class="case-image" />
+        <p>I conducted competitive analysis of AI chat interfaces (Copilot, ChatGPT, Bard) to identify common interaction patterns.  This research informed our decision to feature prominent 
+          FAQs and a scrollable conversation view to align with user expectations.</p>  
+        <h2>The Mandate: Reduce Ticket Volume</h2>
+        <p>Our business partners were under pressure to improve SLA and reduce the high volume of tickets submitted for common questions.</p>
+        <p>We faced several technical and UX challenges:</p>
+        <ul>
+          <li><strong>Authentication:</strong> We resolved a fragmented authentication experience across companies by implementing SAT tokens, avoiding the need for duplicate email entry and streamlining the login flow.</li>
+          <li><strong>Data Ingest:</strong>Initially using three databases, we consolidated to a single source.  This improved result accuracy and allowed the business team to easily update service and policy information</li>
+          <li><strong>Contextual Responses:</strong>Articles were tagged to trigger expanded information on specific products, enhancing results and creating a more “promoter-level” experience.</li>
+        </ul>
+        <img src="assets/images/Response_XPE Promotor.png" alt="Promoter Info" class="case-image" />
+        <p>We also waited for the release of key AI features before launching:</p>
+        <ul>
+          <li>Hybrid Search for better keyword recognition</li>
+          <li>Additional guardrails that ensured answers came only from validated sources and not general AI knowledge</li>
+        </ul>
+        <h2>Outcome & Reflection</h2>
+        <p>Through strategic planning, continuous collaboration and iterative design we delivered a solution we were all proud of - from kickoff to launch in just five months.  
+          User feedback indicated that the AI experience was faster and easier to use.</p>
+        <p>This project helped me grow as both a designer and project manager.  I deepened my understanding of AI powered interactions and learned how to simplify complex backend process for seamless user experiences.</p>
       </div>
     </section>
 
