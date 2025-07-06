@@ -100,6 +100,7 @@
       background-color: #ffffff;
       box-sizing: border-box;
       width: 100%;
+      cursor: pointer;
     }
 
     .case-study h1 {
@@ -445,7 +446,7 @@
     });
 
     // Expand/collapse sections
-    document.querySelectorAll('.case-study h1').forEach(header => {
+    document.querySelectorAll('.case-study').forEach(header => {
       header.addEventListener('click', () => {
         const section = header.closest('.case-study');
         section.classList.toggle('collapsed');
