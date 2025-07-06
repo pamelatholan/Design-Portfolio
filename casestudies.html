@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>UX Case Studies</title>
-  <!-- <link rel="stylesheet" href="styles.css" /> -->
+  <link rel="stylesheet" href="assets/css/style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
     /* Base styles */
@@ -54,27 +54,7 @@
   position: relative;
   z-index: 1;
 } */
-
-    nav {
-      background: #f8f8f8;
-      padding: 1rem;
-      border-bottom: 1px solid #ddd;
-    }
-
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 1.5rem;
-      padding: 0;
-      margin: 0;
-    }
-
-    nav ul li a {
-      text-decoration: none;
-      color: #333;
-      font-weight: 500;
-    }
-
+  
     .filter-bar {
       max-width: 800px;
       margin: 2rem auto 0;
@@ -100,7 +80,6 @@
       background-color: #ffffff;
       box-sizing: border-box;
       width: 100%;
-      cursor: pointer;
     }
 
     .case-study h1 {
@@ -208,12 +187,19 @@
   </style>
 </head>
 <body>
-  <nav>
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <!-- <li><a href="#">Case Studies</a></li> -->
-    </ul>
-  </nav>
+  <header class="navbar">
+    <div class="nav-container">
+      <div class="logo">Pam Tholan</div>
+      <nav id="nav-links">
+        <a href="index.html">Home</a>
+        <a href="casestudies.html">Case Studies</a>
+        <a href="projects.html">Projects</a>
+        <a href="portfolio_resume.html">Resume</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <div class="hamburger" id="hamburger">&#9776;</div>
+    </div>
+  </header>
 
   <div class="filter-bar">
     <label for="filter">Filter by Topic:</label>
