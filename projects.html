@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Project Showcase</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&family=Megrim&family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      background-color: #f9f9f9;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    .navbar {
+      background-color: black;
+      color: white;
+      padding: 1rem 2rem;
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    #nav-links a {
+      color: white;
+      margin-left: 1rem;
+      text-decoration: none;
+    }
+
+    .hamburger {
+      display: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    .projects {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      padding: 2rem;
+      flex-grow: 1;
+    }
+
+    .project-card {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      padding: 1rem;
+      transition: max-height 0.5s ease, box-shadow 0.3s ease;
+      overflow: hidden;
+      cursor: pointer;
+      position: relative;
+      max-height: 100px;
+    }
+
+    .project-card.expanded {
+      max-height: 1000px;
+    }
+
+    .project-card:hover {
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      transform: translateY(-2px);
+    }
+
+    .project-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .project-info {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .project-header img {
+      width: 60px;
+      height: 60px;
+      object-fit: cover;
+      border-radius: 6px;
+    }
+
+    .project-header h3 {
+      margin: 0;
+    }
+
+    .chevron {
+      transition: transform 0.3s ease;
+    }
+
+    .project-card.expanded .chevron {
+      transform: rotate(180deg);
+    }
+
+    .subtitle {
+      color: #888;
+      margin-top: 0.25rem;
+    }
+
+    .project-content {
+      opacity: 0;
+      transform: translateY(-10px);
+      transition: opacity 0.4s ease, transform 0.4s ease;
+      margin-top: 0;
+    }
+
+    .project-card.expanded .project-content {
+      opacity: 1;
+      transform: translateY(0);
+      margin-top: 1rem;
+    }
+
+    .project-content img.preview {
+      max-width: 100%;
+      margin: 1rem 0;
+      border-radius: 6px;
+    }
+
+    .project-content a {
+      display: inline-block;
+      margin-right: 1rem;
+      margin-top: 0.5rem;
+      color: #007BFF;
+      text-decoration: none;
+    }
+
+    .footer {
+      background: black;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+    }
+
+    @media (min-width: 768px) {
+      .projects {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .hamburger {
+        display: none;
+      }
+    }
+
+    @media (max-width: 768px) {
+      #nav-links {
+        display: none;
+        flex-direction: column;
+        background-color: #333;
+      }
+
+      #nav-links a {
+        margin: 1rem 0;
+      }
+
+      .hamburger {
+        display: block;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="navbar">
+    <div class="nav-container">
+      <div class="logo">Pam Tholan</div>
+      <nav id="nav-links">
+        <a href="index.html">Home</a>
+        <a href="casestudies.html">Case Studies</a>
+        <a href="projects.html">Projects</a>
+        <a href="portfolio_resume.html">Resume</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <div class="hamburger" id="hamburger">&#9776;</div>
+    </div>
+  </header>
+
+  <section class="projects">
+    <div class="project-card" onclick="toggleCard(this)">
+      <div class="project-header">
+        <div class="project-info">
+          <img src="assets/images/XPE_Wizard.png" alt="XPE Wizard Thumbnail" />
+          <div>
+            <h3>XPE Wizard</h3>
+            <p class="subtitle">AI-Powered Ticket Reduction Tool</p>
+          </div>
+        </div>
+        <i class="fas fa-chevron-down chevron"></i>
+      </div>
+      <div class="project-content">
+        <p>Reduced support tickets by 30% with a custom AI-powered wizard. UX/UI redesign and intelligent data ingest made the process more intuitive for employees.</p>
+        <img class="preview" src="assets/images/XPE_Wizard.png" alt="XPE Wizard Screenshot" />
+        <a href="#">View Case Study</a>
+        <a href="#">Live Demo</a>
+      </div>
+    </div>
+
+    <div class="project-card" onclick="toggleCard(this)">
+      <div class="project-header">
+        <div class="project-info">
+          <img src="assets/images/myExpense.png" alt="myExpense Thumbnail" />
+          <div>
+            <h3>myExpense</h3>
+            <p class="subtitle">Employee Reimbursement App</p>
+          </div>
+        </div>
+        <i class="fas fa-chevron-down chevron"></i>
+      </div>
+      <div class="project-content">
+        <p>Designed a responsive app to simplify employee expense tracking and approvals. Included real-time receipt uploads and audit tracking.</p>
+        <img class="preview" src="assets/images/myExpense.png" alt="myExpense Screenshot" />
+        <a href="#">View Case Study</a>
+        <a href="#">Live Demo</a>
+      </div>
+    </div>
+
+    <div class="project-card" onclick="toggleCard(this)">
+      <div class="project-header">
+        <div class="project-info">
+          <img src="assets/images/MUAh_icon.svg" alt="MUAhub Thumbnail" />
+          <div>
+            <h3>MUAhub</h3>
+            <p class="subtitle">Marketplace for Makeup Artists</p>
+          </div>
+        </div>
+        <i class="fas fa-chevron-down chevron"></i>
+      </div>
+      <div class="project-content">
+        <p>Built a multi-user platform for booking and showcasing makeup artists. Focused on inclusive design, clean UI, and user-led feedback loops.</p>
+        <img class="preview" src="assets/images/MUAhub.png" alt="MUAhub Screenshot" />
+        <a href="#">View Case Study</a>
+        <a href="#">Live Demo</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>© 2025 Pam Tholan. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function toggleCard(card) {
+      card.classList.toggle("expanded");
+    }
+
+    document.getElementById('hamburger').addEventListener('click', () => {
+      const navLinks = document.getElementById('nav-links');
+      navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+    });
+  </script>
+</body>
+</html>
