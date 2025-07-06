@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact – Pam Tholan</title>
+  <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&family=Megrim&family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    .contact-container {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 2rem;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    .contact-container h1 {
+      font-size: 2.5rem;
+      font-family: "Megrim";
+      margin-bottom: 1rem;
+    }
+
+    .contact-container p {
+      font-size: 1.25rem;
+      font-family: "Dosis";
+      margin-bottom: 2rem;
+    }
+
+    .icon-links {
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      margin-top: 2rem;
+    }
+
+    .icon-links a {
+      color: #222;
+      font-size: 2.5rem;
+      transition: color 0.3s ease;
+    }
+
+    .icon-links a:hover {
+      color: #555;
+    }
+
+    @media (max-width: 600px) {
+      .contact-container {
+        padding: 1rem;
+      }
+
+      .icon-links {
+        gap: 2rem;
+      }
+
+      .icon-links a {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header class="navbar">
+    <div class="nav-container">
+      <div class="logo">Pam Tholan</div>
+      <nav id="nav-links">
+        <a href="index.html#hero">Home</a>
+        <a href="casestudies.html">Case Studies</a>
+        <a href="projects.html">Projects</a>
+        <a href="portfolio_resume.html">Resume</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <div class="hamburger" id="hamburger">&#9776;</div>
+    </div>
+  </header>
+
+  <!-- Contact Section -->
+  <main>
+    <div class="contact-container">
+      <h1>Let's Connect</h1>
+      <p>Feel free to reach out via email or LinkedIn.</p>
+
+      <!-- Icon Links -->
+     <div class="icon-links">
+  <a href="mailto:pamelatholan@yahoo.com?subject=Portfolio%20Contact" title="Email Me">
+    <i class="fas fa-envelope"></i>
+  </a>
+  <a href="https://www.linkedin.com/in/pamela-tholan/" target="_blank" title="LinkedIn">
+    <i class="fab fa-linkedin"></i>
+  </a>
+</div>
+
+<div style="margin-top: 1rem; font-size: 0.95rem; font-family: 'Dosis'; color: #555;">
+  If your email app doesn't open, copy this address:
+  <span id="email-text" style="font-weight: bold;">pamelatholan@yahoo.com</span>
+  <button id="copy-btn" style="margin-left: 0.5rem; padding: 2px 8px; font-size: 0.8rem; border: none; background-color: #222; color: white; border-radius: 4px; cursor: pointer;">
+    Copy
+  </button>
+  <span id="copy-feedback" style="margin-left: 0.5rem; color: green; display: none;">Copied!</span>
+</div>
+
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>© 2025 Pam Tholan. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Hamburger menu toggle
+    const hamburger = document.getElementById("hamburger");
+    const navLinks = document.getElementById("nav-links");
+
+    hamburger.addEventListener("click", () => {
+      navLinks.classList.toggle("active");
+    });
+  </script>
+
+  <script>
+  const copyBtn = document.getElementById("copy-btn");
+  const emailText = document.getElementById("email-text");
+  const feedback = document.getElementById("copy-feedback");
+
+  copyBtn.addEventListener("click", () => {
+    navigator.clipboard.writeText(emailText.textContent)
+      .then(() => {
+        feedback.style.display = "inline";
+        setTimeout(() => {
+          feedback.style.display = "none";
+        }, 2000);
+      })
+      .catch(() => {
+        alert("Copy failed. Please copy manually.");
+      });
+  });
+</script>
+
+
+</body>
+</html>
