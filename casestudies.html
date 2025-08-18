@@ -19,51 +19,48 @@
       font-family: Arial, sans-serif;
       margin: 0;
       background-color: #f4f4f9;
-      /* background-image: url('assets/images/logo_notext.png'); */
-      background-size: cover; 
-      background-position: center center; 
-      background-repeat:repeat-x; 
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      background-size: contain;
-      background-size: 30%;   
+      background-image: url('assets/images/background80.png'); /* Path to the image file */
+      background-size: cover; /* Make sure the image covers the entire screen */
+      background-position: center center; /* Center the image */
+      background-repeat: no-repeat; /* Prevent the image from repeating */ 
+       
     }
 
 /* For utilizing a background image and controlling opacity of just that image */
 
-  /* body::before {
+  body::before {
   content: "";
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url('assets/images/logo_notext.png');
-  background-repeat: repeat-x repeat-y;
+  background-image: url('assets/images/background.png');
   background-position: center center;
-  background-size: 15%; */
-  /* opacity: 0.1;             This makes only the image transparent */
-  /* z-index: 0; */
-  /* pointer-events: none;    /* Prevents image layer from blocking interactions */
-  /* }
+  background-size: cover;
+  opacity: 0;
+  z-index: 0;
+  pointer-events: none; /* Prevents image layer from blocking interactions */
+  }
 
 /* for centering image */
 
-/* body > * {
+body > * {
   position: relative;
   z-index: 1;
-} */
+}
   
     .filter-bar {
       max-width: 800px;
       margin: 2rem auto 0;
       padding: 0 2rem;
+      border-radius: 5px;
     }
 
     .filter-bar select {
       padding: 0 0.5rem;
       font-size: 1rem;
+      border-radius: 5px;
     }
 
     main {
@@ -80,6 +77,13 @@
       background-color: #ffffff;
       box-sizing: border-box;
       width: 100%;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+    }
+
+    .case-study:hover {
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      transform: translateY(-2px);
     }
 
     .case-study h1 {
