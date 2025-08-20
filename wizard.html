@@ -210,6 +210,51 @@
     margin-top: auto;
     }
 
+    /* Lightbox overlay */
+#lightbox {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background: rgba(0,0,0,0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 9999;
+}
+
+/* Active state */
+#lightbox.active {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Image inside lightbox */
+#lightbox img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.8);
+  object-fit: contain;
+}
+
+/* Close button */
+#lightbox .close-btn {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 2rem;
+  color: white;
+  cursor: pointer;
+  background: rgba(0,0,0,0.6);
+  border-radius: 50%;
+  padding: 0.25rem 0.6rem;
+  line-height: 1;
+}
+
+
 @media (max-width: 768px) {
   .section {
     flex-direction: column !important; /* force column stack */
@@ -264,7 +309,7 @@
     <div class="swiper-button-next"></div>
   </div>
 </section>
-  </section>
+
 
   <!-- Project Overview -->
   <section class="overview" data-aos="fade-up">
@@ -294,7 +339,7 @@
         <p>The redesign laid the groundwork for creating the enhanced experience of the generative AI XPE Wizard.</p>
         <p>The new login page was designed to create a better layout for the space that didn’t push the most important info, the actual login, down the page.  Incorporating updated brand imagery and colors created a more modern page and experience.</p>
     </div>
-    <img src="assets/images/xpe_layout_login.png" alt="Login">
+    <img src="assets/images/xpe_layout_login.png" alt="Login" class="clickable-img">
   </section>
 
   <section class="section" data-aos="fade-left">
@@ -304,7 +349,7 @@
         <p>The redesign of the landing page was the biggest improvement.  Employees were given options that allowed them to start or change services, view existing requests or view additional information about all products and services that were being offered to them.</p>
         <p>The business partners wanted the site to have more of an ecommerce feel, which is why I chose to use a grid layout to display product and service info.  The initial iteration had tiles that when hovered over displayed information, but due to the large volume of text that had to be displayed, we ultimately went with the grid layout.</p>
     </div>
-    <img src="assets/images/xpe_layout.png" alt="Product Page">
+    <img src="assets/images/xpe_layout.png" alt="Product Page" class="clickable-img">
   </section>
 
   <section class="section" data-aos="fade-right">
@@ -316,7 +361,7 @@
            We also added a feature for certain products and services where additional information would populate in a separate response box below the answer to the question asked.  
            For example, if you asked what discounts were available for Xfinity Home, the XPE Wizard would answer your question and then a video about home security would populate in what we called the Promoter box.  This allowed the user to educate themselves further on the subject of their original query.</p>
     </div>
-    <img src="assets/images/xpe_layout_wizard.png" alt="AI">
+    <img src="assets/images/xpe_layout_wizard.png" alt="AI" class="clickable-img">
   </section>
 
   <!-- <section class="section" data-aos="fade-left">
@@ -367,7 +412,48 @@
       prevEl: '.swiper-button-prev',
     },
   });
+
+  // Create lightbox element
+  const lightbox = document.createElement('div');
+  lightbox.id = 'lightbox';
+  lightbox.innerHTML = `
+    <span class="close-btn">&times;</span>
+    <img src="" alt="Expanded image">
+  `;
+  document.body.appendChild(lightbox);
+
+  const lightboxImg = lightbox.querySelector('img');
+  const closeBtn = lightbox.querySelector('.close-btn');
+
+  // Open lightbox when clicking section images
+  document.querySelectorAll('.section img').forEach(img => {
+    img.style.cursor = 'zoom-in'; // add hover feedback
+    img.addEventListener('click', () => {
+      lightbox.classList.add('active');
+      lightboxImg.src = img.src;
+      lightboxImg.alt = img.alt;
+    });
+  });
+
+  // Close lightbox
+  closeBtn.addEventListener('click', () => {
+    lightbox.classList.remove('active');
+  });
+
+  // Close if clicking outside the image
+  lightbox.addEventListener('click', e => {
+    if (e.target === lightbox) {
+      lightbox.classList.remove('active');
+    }
+  });
+
+  // Close on ESC key
+  document.addEventListener('keydown', e => {
+    if (e.key === "Escape") {
+      lightbox.classList.remove('active');
+    }
+  });
+
 </script>
 </body>
 </html>
-
