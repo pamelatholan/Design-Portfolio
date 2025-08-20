@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Project – XPE Wizard</title>
+  <title>Project – myExpense</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
@@ -289,16 +289,16 @@
 
   <!-- Hero Section -->
   <section class="hero" data-aos="fade-up">
-    <h2>XPE Wizard</h2>
-    <p>AI Knowledge Base Assistant</p>
+    <h2>myExpense</h2>
+    <p>Employee Reimbursement Site</p>
     <!-- <img src="assets/images/XPE_Wizard.png" alt="Project Preview"> -->
       <!-- Swiper container -->
   <div class="swiper hero-swiper">
     <div class="swiper-wrapper">
       <!-- Slides -->
-      <div class="swiper-slide"><img src="assets/images/new_landing.png" alt="Preview 1"></div>
-      <div class="swiper-slide"><img src="assets/images/wizard_results.png" alt="Preview 2"></div>
-      <div class="swiper-slide"><img src="assets/images/Response_XPE Promotor.png" alt="Preview 3"></div>
+      <div class="swiper-slide"><img src="assets/images/myExpense.png" alt="Dashboard View"></div>
+      <div class="swiper-slide"><img src="assets/images/myExpense_dash_grid.png" alt="Alt Dashboard View"></div>
+      <div class="swiper-slide"><img src="assets/images/myExpense_Menu Options.png" alt="User Options"></div>
     </div>
 
     <!-- Pagination dots -->
@@ -317,15 +317,15 @@
     <div class="overview-grid">
       <div class="overview-item">
         <h4>Who</h4>
-        <p>Workforce eXperience Technology team at Comcast</p>
+        <p>Finance Team at Comcast</p>
       </div>
       <div class="overview-item">
         <h4>What</h4>
-        <p>UX research, UI design, implementation of generative AI</p>
+        <p>UX research, UI design</p>
       </div>
       <div class="overview-item">
         <h4>Result</h4>
-        <p>Decreased Ticket Submission by 30% with the addition of Generative AI</p>
+        <p>Created a functional dashboard and updated site for employees to easily manage their company reimbursements</p>
       </div>
     </div>
   </section>
@@ -334,55 +334,65 @@
   <section class="section" data-aos="fade-right">
     <div>
       <h3>Project Overview</h3>
-        <p>This is a site for employees to add, change and manage their products and services provided by the company.</p>
-        <p>I was fortunate enough to do the initial redesign for this site.  It went from a confusing experience to more of an ecommerce feel for selecting products and services and viewing additional information about them.</p> 
-        <p>The redesign laid the groundwork for creating the enhanced experience of the generative AI XPE Wizard.</p>
-        <p>The new login page was designed to create a better layout for the space that didn’t push the most important info, the actual login, down the page.  Incorporating updated brand imagery and colors created a more modern page and experience.</p>
+      <p>I was tapped to redesign how expense reports were submitted after working with the project sponsor to help establish UX principles for our organization to use.</p> 
+      <p>This included a redesign of the dashboard so it actually functioned like a dashboard and copious form redesign.</p>
     </div>
-    <img src="assets/images/xpe_layout_login.png" alt="Login" class="clickable-img">
+    <img src="assets/images/myE_dash_layout.png" alt="Dashboard" class="clickable-img">
   </section>
 
   <section class="section" data-aos="fade-left">
     <div>
-      <h3>User Research</h3>
-        <p>User feedback on the site was overwhelmingly negative when it came to navigation.  As someone who used the old site when I was a new employee, I can confirm that the site was not user friendly.</p>
-        <p>The redesign of the landing page was the biggest improvement.  Employees were given options that allowed them to start or change services, view existing requests or view additional information about all products and services that were being offered to them.</p>
-        <p>The business partners wanted the site to have more of an ecommerce feel, which is why I chose to use a grid layout to display product and service info.  The initial iteration had tiles that when hovered over displayed information, but due to the large volume of text that had to be displayed, we ultimately went with the grid layout.</p>
+      <h3>User Experience</h3>
+            <p>I reviewed the user requirements, parsed out which were design related, and began my initial design.</p>
+            <p>The dashboard was the biggest visual change.</p>
+            <p>Instead of a largely unutilized space, the page now displayed all pertinent information including updates, instructions, ability to pay any amount owed, options for uploading receipts and creating an expense report as well as views for expense report status.</p>
+            <p>Initially I wanted to have the dashboard utilize widgets so everything could be done within it’s allotted space on the page.</p>
+            <p>There was just too much information required when submitting an expense report to have that approach work and still be a great user experience.</p>                           
     </div>
-    <img src="assets/images/xpe_layout.png" alt="Product Page" class="clickable-img">
+    <img src="assets/images/myE_create_layout.png" alt="Create Expense" class="clickable-img">
   </section>
 
   <section class="section" data-aos="fade-right">
     <div>
-      <h3>Generative AI</h3>
-        <p>I designed instances of generative AI responses for several internal sites at Comcast.  This particular instance broke the mold, in the best way possible, but still retained key re-usability aspects in the form of the displayed results, cited sources and feedback options.</p>
-        <p>I was able to  layout the response page more like a chat feature.  This was done with future iterations in mind as our generative AI grew and expanded to allow for a full chatbot experience.</p>
-        <p>Using Q&A pairs to determine accuracy, we worked to train the LLM to return results that were specific to cited sources and not its general knowledge.  
-           We also added a feature for certain products and services where additional information would populate in a separate response box below the answer to the question asked.  
-           For example, if you asked what discounts were available for Xfinity Home, the XPE Wizard would answer your question and then a video about home security would populate in what we called the Promoter box.  This allowed the user to educate themselves further on the subject of their original query.</p>
+      <!-- <h3>Generative AI</h3> -->
+            <p>I pivoted to modals for the forms to enhance layout and legibility.</p>
+            <p>I was able to reduce redundancy by removing duplicated links with different names that took you to the same place.</p>
+            <p>I also ensured click depth was minimized for menu options.</p>
+            <p>I made sure the forms were clear.  Drop down menus provided additional detail on what was being selected to reduce error and all required fields were now labeled.</p>
     </div>
-    <img src="assets/images/xpe_layout_wizard.png" alt="AI" class="clickable-img">
+    <img src="assets/images/myE_attachments_layout.png" alt="Attachments" class="clickable-img">
   </section>
 
-  <!-- <section class="section" data-aos="fade-left">
+  <section class="section" data-aos="fade-left">
     <div>
-      <h3>Testing & Iteration</h3>
-      <p>User testing with 15 participants revealed key improvements to search filters and navigation...</p>
+      <!-- <h3>Testing & Iteration</h3> -->
+            <p>The existing forms were functional of course, however everything was too big or awkwardly occupied the space.</p>
+            <p>There was no use of a grid for content layout, just an endless scroll of fields you maybe had to fill in.</p>
+            <p>By implementing columns and collapsible sections, as well as labeling every required field, it made the form less imposing and allowed the user to focus on what was required, adding additional color if needed.</p>
     </div>
-    <img src="testing.jpg" alt="Testing session">
-  </section> -->
+    <img src="assets/images/myE_addexp_layout.png" alt="Add Expense" class="clickable-img">
+  </section>
+
+  <section class="section" data-aos="fade-right">
+    <div>
+      <!-- <h3>Testing & Iteration</h3> -->
+            <p>In addition to the dashboard and forms, I also redesigned the FAQ page to match the rest of the updated site.</p>
+            <p>I was working with the software engineer who had done the initial UI so I ensured I approached any of my suggested changes delicately and with use cases that backed up what I was suggesting.</p>
+            <p>This project is currently still active with an anticipated launch in 2025</p>    </div>
+    <img src="assets/images/myE_FAQ_layout.png" alt="FAQ" class="clickable-img">
+  </section>
 
   <!-- Results -->
-  <section class="results" data-aos="fade-up">
+  <!-- <section class="results" data-aos="fade-up">
     <h2>Results</h2>
-    <p>Reduced tickets by 30% improving employee satisfaction scores.</p>
-  </section>
+    <p>Created a functional dashboard and updated site for employees to easily manage their company reimbursements</p>
+  </section> -->
 
   <!-- Next Project Navigation -->
   <section class="next-project" data-aos="fade-up">
     <!-- <h3>Next Project</h3> -->
     <a href="projects.html" class="btn back-projects">← Back to Projects</a>
-    <a href="myexpense.html">View Employee Reimbursement Site →</a>
+    <a href="muahub.html">View MUAhub App →</a>
   </section>
 
   <footer>
