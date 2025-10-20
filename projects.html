@@ -8,6 +8,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&family=Megrim&family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css">
   <style>
+    
     * {
       box-sizing: border-box;
       margin: 0;
@@ -69,10 +70,13 @@
       cursor: pointer;
       position: relative;
       max-height: 100px;
+      display: flex;
+      flex-direction: column; /* make the card a column flex container */
     }
 
     .project-card.expanded {
-      max-height: 1000px;
+      max-height: none;         /* remove previous max-height limit */
+      min-height: 400px;        /* give all cards same expanded height */
     }
 
     .project-card:hover {
@@ -119,10 +123,27 @@
     }
 
     .project-content {
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;           /* fill remaining space inside card */
+      gap: 0.5rem;
       opacity: 0;
       transform: translateY(-10px);
       transition: opacity 0.4s ease, transform 0.4s ease;
-      margin-top: 0;
+    }
+
+    .project-content a {
+      align-self: flex-start;
+      margin-top: auto;         /* pushes link to bottom of card content */
+      color: #007BFF;
+      text-decoration: none;
+      font-family: dosis;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .project-content a:hover {
+      color: #0056b3;
     }
 
     .project-card.expanded .project-content {
@@ -131,9 +152,15 @@
       margin-top: 1rem;
     }
 
+    .project-content .content-body {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      flex-grow: 1;
+    }
+
     .project-content img.preview {
       max-width: 100%;
-      margin: 1rem 0;
       border-radius: 6px;
     }
 
@@ -142,11 +169,15 @@
     }
 
     .project-content a {
-      display: inline-block;
-      margin-right: 1rem;
-      margin-top: 0.5rem;
+      margin-top: auto;        /* pushes link to bottom */
       color: #007BFF;
       text-decoration: none;
+      font-family: dosis;
+      font-weight: 500;
+    }
+
+    .project-content a:hover {
+      color: #0056b3;
     }
 
     .footer {
@@ -211,9 +242,12 @@
         <i class="fas fa-chevron-down chevron"></i>
       </div>
       <div class="project-content">
+        <div class="content-body">
         <p class="summary">Reduced support tickets by 30% with a custom AI-powered wizard. UX/UI redesign and intelligent data ingest made the process more intuitive for employees.</p>
         <img class="preview" src="assets/images/XPE_Wizard.png" alt="XPE Wizard Screenshot" />
-        <a href="wizard.html">View Project</a>
+      <a href="wizard.html">View Project</a>  
+      </div>
+        
         <!-- <a href="#">Live Demo</a> -->
       </div>
     </div>
@@ -230,9 +264,12 @@
         <i class="fas fa-chevron-down chevron"></i>
       </div>
       <div class="project-content">
+        <div class="content-body">
         <p class="summary">Designed a responsive site to simplify employee expense tracking and approvals. Included real-time receipt uploads and audit tracking.</p>
         <img class="preview" src="assets/images/myExpense.png" alt="myExpense Screenshot" />
-        <a href="myexpense.html">View Project</a>
+      <a href="myexpense.html">View Project</a>  
+      </div>
+        
         <!-- <a href="#">Live Demo</a> -->
       </div>
     </div>
@@ -249,9 +286,12 @@
         <i class="fas fa-chevron-down chevron"></i>
       </div>
       <div class="project-content">
+        <div class="content-body">
         <p class="summary">Built a multi-user platform for showcasing makeup artists. Focused on inclusive design, clean UI, and user-led feedback loops.</p>
         <img class="preview" src="assets/images/MUAhub.png" alt="MUAhub Screenshot" />
-        <a href="muahub.html">View Project</a>
+      <a href="muahub.html">View Project</a>  
+      </div>
+        
         <!-- <a href="#">Live Demo</a> -->
       </div>
     </div>
