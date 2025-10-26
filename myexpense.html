@@ -53,6 +53,11 @@ nav a {
   font-size: medium;
 }
 
+nav a:hover {
+      color: #8124df;
+      text-decoration: underline;
+    }
+
 .hamburger {
   display: none;
   font-size: 2rem;
@@ -463,6 +468,48 @@ nav a {
       lightbox.classList.remove('active');
     }
   });
+
+
+      document.addEventListener("DOMContentLoaded", () => {
+      AOS.init({ duration: 1000, once: true });
+
+      const heroSwiper = new Swiper(".hero-swiper", {
+        loop: true,
+        autoplay: { delay: 4000, disableOnInteraction: false },
+        pagination: { el: ".swiper-pagination", clickable: true },
+        navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
+      });
+
+      // ✅ Fix footer overlap on initial load
+      setTimeout(() => {
+        window.dispatchEvent(new Event("resize"));
+      }, 600); // wait for animations/swiper to finish calculating height
+
+      // Lightbox setup
+      const lightbox = document.createElement("div");
+      lightbox.id = "lightbox";
+      lightbox.innerHTML = `<span class="close-btn">&times;</span><img src="" alt="Expanded image">`;
+      document.body.appendChild(lightbox);
+
+      const lightboxImg = lightbox.querySelector("img");
+      const closeBtn = lightbox.querySelector(".close-btn");
+
+      document.querySelectorAll(".section img").forEach(img => {
+        img.addEventListener("click", () => {
+          lightbox.classList.add("active");
+          lightboxImg.src = img.src;
+          lightboxImg.alt = img.alt;
+        });
+      });
+
+      closeBtn.addEventListener("click", () => lightbox.classList.remove("active"));
+      lightbox.addEventListener("click", e => {
+        if (e.target === lightbox) lightbox.classList.remove("active");
+      });
+      document.addEventListener("keydown", e => {
+        if (e.key === "Escape") lightbox.classList.remove("active");
+      });
+    });
 
 </script>
 </body>

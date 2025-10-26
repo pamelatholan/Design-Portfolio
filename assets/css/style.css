@@ -60,6 +60,11 @@ nav a {
   font-weight: 500;
 }
 
+nav a:hover {
+      color: #8124df;
+      text-decoration: underline;
+    }
+
 .hamburger {
   display: none;
   font-size: 2rem;
