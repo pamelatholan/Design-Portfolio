@@ -16,6 +16,12 @@
       --font-main: system-ui, sans-serif;
     }
 
+    html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
     body {
       margin: 0;
       padding: 0;
@@ -123,12 +129,61 @@
       padding: 1rem 0;
     }
 
+     /* Skills grid styles */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 1rem;
+    }
+
+    .skill {
+      padding: 12px 14px;
+      border: 1px solid #e8e8e8;
+      border-radius: 8px;
+      background: #fff;
+    }
+
+    .skill h4 {
+      margin: 0 0 6px 0;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--primary-color);
+    }
+
+    .skill p {
+      margin: 0;
+      font-size: 16px;
+      color: #333;
+    }
+
+    /* Prevent nested scrolling issues */
+html, body {
+  height: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* Ensure the main content just grows naturally with the page */
+main {
+  height: auto;
+  overflow: visible;
+}
+
     /* Responsive tweak */
     @media (max-width: 600px) {
       .button-wrapper {
         justify-content: center;
       }
     }
+
+@media (max-width: 900px) {
+  .skills-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+  .skills-grid { grid-template-columns: 1fr; }
+}
+
   </style>
 </head>
 <body>
@@ -162,10 +217,10 @@
     </div>
 
     <p>
-      Results-driven professional with strengths in troubleshooting, communication, organization and customer satisfaction. Passionate about technology and learning. Positioned well to be a team player drawing on past implementation and project management experience and applying adept multi-tasking skills to future opportunities.
+      UX/UI Designer with a strong foundation in project management, skilled at creating user-centered digital solutions that drive adoption and improve business outcomes. Experienced in wireframing, prototyping, and usability testing, with hands-on expertise designing enterprise tools, AI-powered chat features, and mobile-first interfaces. Known for translating complex business requirements into intuitive experiences, streamlining workflows, and improving usability metrics. Brings the added value of project leadership to guide cross-functional teams from concept through delivery.
     </p>
 
-    <section class="section">
+    <!-- <section class="section">
       <h2>Professional Skills</h2>
       UX research, UI design, Project Management, Communication, Problem Solving, Creativity
     </section>
@@ -177,6 +232,59 @@
       <strong>Frameworks:</strong> Bootstrap, React Bootstrap<br>
       <strong>Deployment:</strong> Heroku, GitHub Pages<br>
       <strong>Version Control:</strong> Git
+    </section> -->
+
+     <!-- New Responsive Skills Grid -->
+    <section class="section">
+      <h2>Core Skills</h2>
+
+      <section class="skills-grid" aria-labelledby="skills-heading">
+        <h3 id="skills-heading" class="sr-only">Core Skills</h3>
+
+        <div class="skill">
+          <h4>UX/UI Design</h4>
+          <p>Wireframing · Prototyping · Usability Testing · User Flows · Journey Mapping · Accessibility Standards</p>
+        </div>
+
+        <div class="skill">
+          <h4>Research &amp; Strategy</h4>
+          <p>User Research · Persona Development · Requirements Gathering · Stakeholder Workshops</p>
+        </div>
+
+        <div class="skill">
+          <h4>Project Leadership</h4>
+          <p>Agile/Scrum · Risk Mitigation · Sprint Planning · Cross-functional Collaboration</p>
+        </div>
+      </section>
+    </section>
+
+    <section class="section">
+      <h2>Technical Skills</h2>
+      <!-- <strong>Software:</strong> Windows, MacOS, Adobe Suite, Figma, Microsoft Office, Smartsheet, Jira, VS Code, Salesforce, ServiceNow, Rally<br>
+      <strong>Languages:</strong> HTML, CSS, JavaScript<br>
+      <strong>Frameworks:</strong> Bootstrap, React Bootstrap<br>
+      <strong>Deployment:</strong> Heroku, GitHub Pages<br>
+      <strong>Version Control:</strong> Git
+    </section> -->
+
+    <section class="skills-grid" aria-labelledby="skills-heading">
+        <h3 id="skills-heading" class="sr-only">Technical Skills</h3>
+
+        <div class="skill">
+          <h4>Design Tools</h4>
+          <p>Figma · Adobe XD · Illustrator · Photoshop</p>
+        </div>
+
+        <div class="skill">
+          <h4>Project Tools</h4>
+          <p>Jira · Rally · Smartsheet · ServiceNow · MS Office Suite</p>
+        </div>
+
+        <div class="skill">
+          <h4>Development (Foundational)</h4>
+          <p>HTML · CSS · JavaScript · React · GitHub Pages</p>
+        </div>
+      </section>
     </section>
 
     <section class="section">
