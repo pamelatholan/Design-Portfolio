@@ -3,191 +3,288 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Resume – Pamela Tholan</title>
+  <title>Pamela Tholan – Resume</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&family=Megrim&family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css">
   <style>
     :root {
-      --primary-color: #2c3e50;
-      --accent-color: #8124df;
-      --text-color: #333;
-      --bg-color: #fff;
-      --font-main: system-ui, sans-serif;
+      --accent: #8124df;
+      --bg: #fff;
+      --text: #111;
+      --max-width: 900px;
+      --left-w: 32%;
+      --right-w: 68%;
     }
 
+    /* Make footer stick to bottom */
     html, body {
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden;
-}
+      height: 100%;
+      margin: 0;
+    }
 
     body {
       margin: 0;
-      padding: 0;
-      background-color: var(--bg-color);
-      color: var(--text-color);
-      /* font-family: var(--font-main); */
-      line-height: 1.6;
+      background: var(--bg);
+      color: var(--text);
       display: flex;
       flex-direction: column;
-      min-height: 100vh;
+      min-height: 100vh; /* ensures full viewport height */
     }
 
-    main {
-      flex: 1;
-      padding: 2rem;
-      max-width: 900px;
+    /* ---------- HEADER ---------- */
+    .navbar {
+      background: #222;
+      color: #fff;
+      padding: 1rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .nav-container {
+      max-width: 1100px;
       margin: 0 auto;
-      font-family: dosis;
-      font-size: larger;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 1rem;
     }
 
-    h1, h2, h3 {
-      color: var(--primary-color);
-      margin-bottom: 0.5rem;
-    }
-
-    h1 {
-      font-size: 2rem;
-    }
-
-    h2 {
+    .logo {
       font-size: 1.5rem;
-      border-bottom: 2px solid var(--accent-color);
-      padding-bottom: 0.25rem;
-      margin-top: 2rem;
-    }
-
-    h3 {
-      font-size: 1.2rem;
-      margin-top: 1.5rem;
-    }
-
-    .contact {
-      margin-bottom: 1rem;
-      font-size: 0.95rem;
-    }
-
-    .contact a {
-      color: var(--accent-color);
-      text-decoration: none;
-    }
-
-    .contact a:hover {
-      text-decoration: underline;
-      color: #4f148a;
-    }
-
-    .section {
-      margin-bottom: .5rem;
-    }
-
-    ul {
-      padding-left: 1.2rem;
-      margin-top: 0.5rem;
-    }
-
-    li {
-      margin-bottom: 0.5rem;
-    }
-
-    .job-title {
+      font-family: megrim;
       font-weight: bold;
     }
 
-    .job-location {
-      font-style: italic;
-      font-size: 0.9rem;
-      color: #666;
+    nav {
+      display: flex;
+      gap: 1.5rem;
     }
 
-    .button-wrapper {
-      display: flex;
-      justify-content: flex-end;
-      margin-top: 1rem;
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    nav a:hover {
+      color: var(--accent);
+      text-decoration: underline;
+    }
+
+    .hamburger {
+      display: none;
+      font-size: 2rem;
+      cursor: pointer;
+      color: #fff;
+    }
+
+    /* ---------- PAGE LAYOUT ---------- */
+    main.page {
+      width: min(95%, 1200px);
+      margin: 2rem auto;
+      padding: 1rem 2rem;
+      flex: 1; /* pushes footer down */
     }
 
     .download-button {
-      padding: 0.5rem 1rem;
-      background-color: var(--accent-color);
-      color: white;
+      display: inline-block;
+      margin-bottom: 1.5rem;
+      padding: 0.6rem 1.2rem;
+      background-color: var(--accent);
+      color: #fff;
       text-decoration: none;
       border-radius: 5px;
-      font-weight: bold;
-      white-space: nowrap;
+      font-weight: 600;
+      transition: background 0.2s;
     }
 
     .download-button:hover {
-      background-color: #4f148a;
+      background-color: #610dc4;
     }
 
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .contact {
+      font-family: dosis;
+    }
+
+    .info {
+      font-family: dosis;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 2rem;
+      letter-spacing: 0.5px;
+      color: var(--accent);
+    }
+
+    .title {
+      font-size: 16px;
+      font-family: "orbitron";
+    }
+
+    .row {
+      display: flex;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
+    .left {
+      width: var(--left-w);
+      padding-right: 10px;
+      min-width: 260px;
+    }
+
+    .right {
+      width: var(--right-w);
+      flex: 1;
+      min-width: 300px;
+    }
+
+    /* ---------- SECTIONS ---------- */
+    .card {
+      margin-bottom: 1.5rem;
+    }
+
+    .section-title {
+      font-weight: 700;
+      font-size: 16px;
+      color: var(--accent);
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      font-family: "orbitron";
+    }
+
+  
+    /* ---------- SKILLS ---------- */
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .chip {
+      background: #f3f7fb;
+      padding: 5px 10px;
+      border-radius: 6px;
+      font-size: 12px;
+    }
+
+    /* ---------- EXPERIENCE ---------- */
+    .role {
+      margin-bottom: 12px;
+    }
+
+    .role header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 5px;
+    }
+
+    .role h3 {
+      margin: 0;
+      font-size: 16px;
+      color: #000;
+    }
+
+    .dates {
+      font-size: 12px;
+    }
+
+    .bullets {
+      margin: 8px 0 0 16px;
+      padding: 0;
+    }
+
+    .bullets li {
+      margin-bottom: 6px;
+      font-size: 16px;
+    }
+
+    /* ---------- FOOTER ---------- */
     .footer {
       background-color: #222;
       color: #fff;
       text-align: center;
       padding: 1rem 0;
+      margin-top: auto;
+      font-family: dosis;
     }
 
-     /* Skills grid styles */
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
-      margin-top: 1rem;
-    }
+    /* ---------- RESPONSIVE ---------- */
+    @media (max-width: 780px) {
+      #nav-links {
+        display: none;
+        flex-direction: column;
+        background-color: #222;
+        position: absolute;
+        top: 64px;
+        right: 0;
+        width: 100%;
+        text-align: center;
+      }
 
-    .skill {
-      padding: 12px 14px;
-      border: 1px solid #e8e8e8;
-      border-radius: 8px;
-      background: #fff;
-    }
+      #nav-links.active {
+        display: flex;
+      }
 
-    .skill h4 {
-      margin: 0 0 6px 0;
-      font-size: 18px;
-      font-weight: 700;
-      color: var(--primary-color);
-    }
+      .hamburger {
+        display: block;
+      }
 
-    .skill p {
-      margin: 0;
-      font-size: 16px;
-      color: #333;
-    }
+      /* Swap columns: right first */
+      .row {
+        flex-direction: column-reverse;
+      }
 
-    /* Prevent nested scrolling issues */
-html, body {
-  height: auto;
-  overflow-y: auto;
-  overflow-x: hidden;
-}
+      .left,
+      .right {
+        width: 100%;
+        min-width: 0;
+      }
 
-/* Ensure the main content just grows naturally with the page */
-main {
-  height: auto;
-  overflow: visible;
-}
+      .download-button {
+        display: block;
+        text-align: center;
+        margin: 0 auto 1.5rem;
+      }
 
-    /* Responsive tweak */
-    @media (max-width: 600px) {
-      .button-wrapper {
-        justify-content: center;
+      /* Contact info displays full width on mobile */
+      .header {
+        text-align: left;
+        width: 100%;
+        margin-top: 0.5rem;
       }
     }
 
-@media (max-width: 900px) {
-  .skills-grid { grid-template-columns: repeat(2, 1fr); }
-}
-@media (max-width: 600px) {
-  .skills-grid { grid-template-columns: 1fr; }
-}
+    @media print {
+      a.download-button {
+        display: none;
+      }
+    }
 
+    @supports (-webkit-touch-callout: none) {
+  body {
+    min-height: -webkit-fill-available;
+  }
+}
   </style>
 </head>
 <body>
-
+  <!-- HEADER -->
   <header class="navbar">
     <div class="nav-container">
       <div class="logo">Pam Tholan</div>
@@ -202,154 +299,129 @@ main {
     </div>
   </header>
 
-  <main>
+  <!-- MAIN CONTENT -->
+  <main class="page">
+    <a href="assets/files/Design Resume.pdf" class="download-button" target="_blank"> Download PDF
+    </a>
 
-    <div class="button-wrapper">
-      <a href="assets/files/Pamela Tholan Resume.pdf" class="download-button" download>Download PDF Resume</a>
+    <div class="header">
+      <div>
+        <h1 style="font-family: megrim;">Pamela Tholan</h1>
+        <div class="title">Product + UX/UI Designer</div>
+      </div>
+      <div class="contact">
+        <div>pamelatholan@yahoo.com</div>
+        <div>267. 716. 2275</div>
+        <a href="https://www.linkedin.com/in/pamela-tholan/">LinkedIn</a> |
+        <a href="https://pamelatholan.github.io/Design-Portfolio/">Portfolio</a>
+      </div>
     </div>
 
-    <h1>Pamela Tholan</h1>
-    <div class="contact">
-      Chadds Ford, PA | 267.716.2275<br>
-      <a href="mailto:pamelatholan@yahoo.com">pamelatholan@yahoo.com</a> |
-      <a href="https://www.linkedin.com/in/pamela-tholan/" target="_blank">LinkedIn</a> |
-      <a href="https://pamelatholan.github.io/Design-Portfolio/" target="_blank">Portfolio</a>
+    <div class="row">
+      <!-- LEFT COLUMN -->
+      <aside class="left">
+        <section class="info">
+          <div class="section-title">Skills & Tools</div>
+          <div class="skills">
+            <span class="chip">Figma</span>
+            <span class="chip">Adobe Illustrator</span>
+            <span class="chip">Adobe Photoshop</span>
+            <span class="chip">Adobe XD</span>
+            <span class="chip">Wireframing</span>
+            <span class="chip">Prototyping</span>
+            <span class="chip">User Research</span>
+            <span class="chip">Usability Testing</span>
+            <span class="chip">Smartsheet</span>
+            <span class="chip">Jira</span>
+
+          </div>
+        </section>
+<br>
+        <section class="info">
+          <div class="section-title">Selected Projects</div>
+          <div>
+            <p><b>AI Widget – Internal Platform</b><br>Designed a custom AI powered wizard to decrease support tickets.</p>
+            <p><b>Responsive Site Redesign</b><br>Designed a responsive site to simplify employee expense tracking and approvals.</p>
+            <p><b>Mobile-first App Design</b><br>Designed a multi-user platform for showcasing makeup artists.</p>
+          </div>
+        </section>
+<br>
+        <section class="info">
+          <div class="section-title">Education & Certifications</div>
+          <div>
+            <p>Full Stack Web Development – UPENN Coding Bootcamp</p>
+            <br>
+            <p>Associate of Science, Graphic Design – The Art Institute of Philadelphia</p>
+          </div>
+        </section>
+      </aside>
+
+      <!-- RIGHT COLUMN -->
+      <section class="right">
+        <section class="info">
+          <div class="section-title">Summary</div>
+          <div>
+            UX/UI Designer with a strong foundation in project management, skilled at creating user-centered digital solutions that drive adoption and improve business outcomes. Experienced in wireframing, prototyping, and usability testing, with hands-on expertise designing enterprise tools, AI-powered chat features, and mobile-first interfaces. Known for translating complex business requirements into intuitive experiences, streamlining workflows, and improving usability metrics. Brings the added value of project leadership to guide cross-functional teams from concept through delivery.
+          </div>
+        </section>
+<br>
+        <section class="info">
+          <div class="section-title">Experience</div>
+
+          <article class="role">
+            <header>
+              <h3>Comcast — Project Manager | UX/UI Designer</h3>
+              <div class="dates">Nov 2021 – Present</div>
+            </header>
+            <ul class="bullets">
+              <li>Led design and launch of enterprise UX/UI solutions including AI-driven widgets, mobile-first redesigns, and internal platform enhancements.</li>
+              <li>Created wireframes, prototypes, and high-fidelity mockups in Figma to improve usability and brand alignment.</li>
+              <li>Managed Agile workflows and tracked progress with Smartsheet and Jira.</li>
+            </ul>
+          </article>
+
+          <article class="role">
+            <header>
+              <h3>Comcast — Project Manager (Contractor) | UX/UI Contributor</h3>
+              <div class="dates">Sep 2020 – Nov 2021</div>
+            </header>
+            <ul class="bullets">
+              <li>Partnered with designers and analysts to translate user needs into user flows and wireframes; facilitated UAT and feedback cycles.</li>
+              <li>Coordinated Agile sprints, backlog priorities, and release timelines while reporting status to leadership.</li>
+            </ul>
+          </article>
+
+          <article class="role">
+            <header>
+              <h3>Telerx — Project Manager | Business Analyst | UX Contributor</h3>
+              <div class="dates">Nov 2018 – Jul 2020</div>
+            </header>
+            <ul class="bullets">
+              <li>Bridged clients, developers, and internal teams to deliver user-centered CRM upgrades and digital solutions.</li>
+              <li>Gathered requirements, mapped user journeys, and conducted process testing to identify usability pain points.</li>
+              <li>Designed IVR call flows and visualized system logic in Visio for improved customer interactions.</li>
+              <p style="font-style: italic">Earlier roles include: Procurement Specialist, Help Desk Analyst and Facilities Specialist</p>
+            </ul>
+          </article>
+        </section>
+      </section>
     </div>
-
-    <p>
-      UX/UI Designer with a strong foundation in project management, skilled at creating user-centered digital solutions that drive adoption and improve business outcomes. Experienced in wireframing, prototyping, and usability testing, with hands-on expertise designing enterprise tools, AI-powered chat features, and mobile-first interfaces. Known for translating complex business requirements into intuitive experiences, streamlining workflows, and improving usability metrics. Brings the added value of project leadership to guide cross-functional teams from concept through delivery.
-    </p>
-
-    <!-- <section class="section">
-      <h2>Professional Skills</h2>
-      UX research, UI design, Project Management, Communication, Problem Solving, Creativity
-    </section>
-
-    <section class="section">
-      <h2>Technical Skills</h2>
-      <strong>Software:</strong> Windows, MacOS, Adobe Suite, Figma, Microsoft Office, Smartsheet, Jira, VS Code, Salesforce, ServiceNow, Rally<br>
-      <strong>Languages:</strong> HTML, CSS, JavaScript<br>
-      <strong>Frameworks:</strong> Bootstrap, React Bootstrap<br>
-      <strong>Deployment:</strong> Heroku, GitHub Pages<br>
-      <strong>Version Control:</strong> Git
-    </section> -->
-
-     <!-- New Responsive Skills Grid -->
-    <section class="section">
-      <h2>Core Skills</h2>
-
-      <section class="skills-grid" aria-labelledby="skills-heading">
-        <h3 id="skills-heading" class="sr-only">Core Skills</h3>
-
-        <div class="skill">
-          <h4>UX/UI Design</h4>
-          <p>Wireframing · Prototyping · Usability Testing · User Flows · Journey Mapping · Accessibility Standards</p>
-        </div>
-
-        <div class="skill">
-          <h4>Research &amp; Strategy</h4>
-          <p>User Research · Persona Development · Requirements Gathering · Stakeholder Workshops</p>
-        </div>
-
-        <div class="skill">
-          <h4>Project Leadership</h4>
-          <p>Agile/Scrum · Risk Mitigation · Sprint Planning · Cross-functional Collaboration</p>
-        </div>
-      </section>
-    </section>
-
-    <section class="section">
-      <h2>Technical Skills</h2>
-      <!-- <strong>Software:</strong> Windows, MacOS, Adobe Suite, Figma, Microsoft Office, Smartsheet, Jira, VS Code, Salesforce, ServiceNow, Rally<br>
-      <strong>Languages:</strong> HTML, CSS, JavaScript<br>
-      <strong>Frameworks:</strong> Bootstrap, React Bootstrap<br>
-      <strong>Deployment:</strong> Heroku, GitHub Pages<br>
-      <strong>Version Control:</strong> Git
-    </section> -->
-
-    <section class="skills-grid" aria-labelledby="skills-heading">
-        <h3 id="skills-heading" class="sr-only">Technical Skills</h3>
-
-        <div class="skill">
-          <h4>Design Tools</h4>
-          <p>Figma · Adobe XD · Illustrator · Photoshop</p>
-        </div>
-
-        <div class="skill">
-          <h4>Project Tools</h4>
-          <p>Jira · Rally · Smartsheet · ServiceNow · MS Office Suite</p>
-        </div>
-
-        <div class="skill">
-          <h4>Development (Foundational)</h4>
-          <p>HTML · CSS · JavaScript · React · GitHub Pages</p>
-        </div>
-      </section>
-    </section>
-
-    <section class="section">
-      <h2>Professional Experience</h2>
-
-      <h3>Comcast, Philadelphia, PA <span class="job-location">| Nov 2021 – Present</span></h3>
-      <div class="job-title">Project Manager II</div>
-      <ul>
-        <li>Support projects for LINCS, XPE, ZETA, Careers Site and GTO Site</li>
-        <li>Develop, implement, and track project plans</li>
-        <li>Mitigate risk by ensuring issues are recognized and addressed accordingly</li>
-        <li>Serve as liaison between Business partners and Development teams</li>
-        <li>Provide updates using Smartsheet</li>
-      </ul>
-      <div class="job-title">UX/UI Design (done while in my current role as PM)</div>
-      <ul>
-        <li>Designed Chat-GPT widgets/loaders for XPE, ComcastNow, AskHRSS</li>
-        <li>Redesigned myExpense and Search Comcast interfaces</li>
-        <li>Enhanced XPE login/landing pages</li>
-        <li>Maintained consistency in ZETA CMS design components</li>
-        <li>Enhanced filtering for further refinement on NPS results</li>
-      </ul>
-
-      <h3>Comcast (Contractor), Philadelphia, PA <span class="job-location">| Sep 2020 – Nov 2021</span></h3>
-      <div class="job-title">Project Manager II</div>
-      <ul>
-        <li>Led MyCovidScreen and RTO projects</li>
-        <li>Managed backlog in Rally and Aha</li>
-        <li>Developed, implemented, and tracked project plans</li>
-        <li>Mitigated risk by ensuring issues were recognized and addressed accordingly</li>
-        <li>Reported technology status to Executive Leadership</li>
-        <li>Developed and executed detailed Sprint cadence to ensure Business objectives were met</li>
-        <li>Submitted code releases in Jira and IOP</li>
-        <li>Served as liaison between Business and Salesforce Development Team</li>
-      </ul>
-
-      <h3>Telerx, Horsham, PA <span class="job-location">| May 2008 – July 2020</span></h3>
-      <div class="job-title">Project Manager II (Nov 2018 – Jul 2020)</div>
-      <ul>
-        <li>Managed CRM upgrades and Salesforce migrations</li>
-        <li>Gathered system/user requirements, created IVR call flows in Visio</li>
-      </ul>
-      <div class="job-title">Other Roles (2008–2018)</div>
-      <ul>
-        <li>Procurement Specialist, Help Desk Analyst, Facilities Specialist, Corporate Receptionist, and more</li>
-      </ul>
-    </section>
-
-    <section class="section">
-      <h2>Education & Credentials</h2>
-      <ul>
-        <li>Associate of Science, Graphic Design – The Art Institute of Philadelphia</li>
-      </ul>
-      <strong>Professional Development:</strong>
-      <ul>
-        <li>Visual Elements of UI Design – CalArts (Coursera)</li>
-        <li>Full Stack Web Development – UPENN Coding Bootcamp</li>
-        <li>SAP Training – SAPTEC, ADM100, ADM900, ADM950</li>
-      </ul>
-    </section>
-
   </main>
 
+  <!-- FOOTER -->
   <footer class="footer">
     <p>© 2025 Pam Tholan. All rights reserved.</p>
   </footer>
+
+  <!-- HAMBURGER MENU SCRIPT -->
+  <script>
+    const hamburger = document.getElementById("hamburger");
+    const navLinks = document.getElementById("nav-links");
+
+    hamburger.addEventListener("click", () => {
+      navLinks.classList.toggle("active");
+      hamburger.classList.toggle("open");
+    });
+  </script>
 </body>
 </html>
