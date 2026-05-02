@@ -9,89 +9,120 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
   <style>
 
-    body {
-      background-image: url('assets/images/new2.svg'); /* Path to the image file */
-      background-size: cover; /* Make sure the image covers the entire screen */
-      background-position: center center; /* Center the image */
-      background-repeat: no-repeat; /* Prevent the image from repeating */
-    }
+   main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
 
+.contact-container {
+  max-width: 800px;
+  width: 100%;
+  margin: 2rem auto;
+  padding: 3rem 2rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 16px;
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.45),
+    0 0 24px rgba(138, 63, 252, 0.18);
+  text-align: center;
+}
 
-    .contact-container {
-      max-width: 800px;
-      margin: 2rem auto;
-      padding: 2rem;
-      background-color: #fff;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      text-align: center;
-    }
+.contact-container h1 {
+  font-size: 2.75rem;
+  font-family: "Megrim", cursive;
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+}
 
-    .contact-container h1 {
-      font-size: 2.5rem;
-      font-family: "Megrim";
-      margin-bottom: 1rem;
-    }
+.contact-container p {
+  font-size: 1.25rem;
+  font-family: "Dosis", sans-serif;
+  margin-bottom: 2rem;
+  color: var(--text-secondary);
+}
 
-    .contact-container p {
-      font-size: 1.25rem;
-      font-family: "Dosis";
-      margin-bottom: 2rem;
-    }
+.icon-links {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  margin-top: 2rem;
+}
 
-    .icon-links {
-      display: flex;
-      justify-content: center;
-      gap: 3rem;
-      margin-top: 2rem;
-    }
+.icon-links a {
+  color: var(--text-primary);
+  font-size: 2.5rem;
+  transition: all 0.3s ease;
+}
 
-    .icon-links a {
-      color: #222;
-      font-size: 2.5rem;
-      transition: color 0.3s ease;
-    }
+.icon-links a:hover {
+  color: var(--accent-secondary);
+  transform: translateY(-4px);
+  text-shadow: 0 0 16px rgba(46, 196, 182, 0.5);
+}
 
-    .icon-links a:hover {
-      color: #0084ff;
-    }
+.email-copy {
+  margin-top: 1.5rem;
+  font-size: 0.95rem;
+  font-family: "Dosis", sans-serif;
+  color: var(--text-secondary);
+}
 
-      #copy-btn {
-    margin-left: 0.5rem;
-    padding: 4px 4px;
-    font-size: 1rem;
-    border: none;
-    background-color: #222;
-    color: white;
-    border-radius: 4px;
-    cursor: pointer;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    transition: background-color 0.3s ease; /* smooth fade */
+#email-text {
+  font-weight: bold;
+  color: var(--text-primary);
+}
+
+#copy-btn {
+  margin-left: 0.5rem;
+  padding: 6px;
+  font-size: 1rem;
+  border: none;
+  background: var(--gradient-primary);
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+#copy-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 16px rgba(138, 63, 252, 0.4);
+}
+
+#copy-btn svg {
+  pointer-events: none;
+}
+
+#copy-feedback {
+  margin-left: 0.5rem;
+  color: var(--accent-secondary);
+  display: none;
+}
+
+@media (max-width: 600px) {
+  main {
+    padding: 1rem;
   }
 
-  #copy-btn:hover {
-    background-color: #0084ff; /* change to any color you like */
+  .contact-container {
+    padding: 2rem 1rem;
   }
 
-  #copy-btn svg {
-    pointer-events: none; /* ensures the button hover works over the icon */
+  .icon-links {
+    gap: 2rem;
   }
-  
-    @media (max-width: 600px) {
-      .contact-container {
-        padding: 1rem;
-      }
 
-      .icon-links {
-        gap: 2rem;
-      }
-
-      .icon-links a {
-        font-size: 2rem;
-      }
-    }
+  .icon-links a {
+    font-size: 2rem;
+  }
+}
   </style>
 </head>
 <body>
@@ -127,16 +158,16 @@
   </a>
 </div>
 
-<div style="margin-top: 1rem; font-size: 0.95rem; font-family: 'Dosis'; color: #555;">
-  If your email app doesn't open, copy this address:
-  <span id="email-text" style="font-weight: bold;">pamelatholan@yahoo.com</span>
+<div class="email-copy">
+    If your email app doesn't open, copy this address:
+<span id="email-text">pamelatholan@yahoo.com</span>
   <button id="copy-btn" aria-label="Copy email address">
     <!-- Clipboard SVG icon -->
     <svg xmlns="http://www.w3.org/2000/svg" height="20" width="20" fill="currentColor" viewBox="0 0 24 24" style="display:block;">
       <path d="M16 4h-2.586L12 2H8c-1.103 0-2 .897-2 2v2H4v14c0 1.103.897 2 2 2h12c1.103 0 2-.897 2-2V6c0-1.103-.897-2-2-2zM8 4h3.586L13 5.414 10.414 8H8V4zM18 20H6V8h12v12z"/>
     </svg>
   </button>
-  <span id="copy-feedback" style="margin-left: 0.5rem; color: green; display: none;">Copied!</span>
+<span id="copy-feedback">Copied!</span>
 </div>
 
 

@@ -5,24 +5,206 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Project – MUAhub</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
   <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&family=Megrim&family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+
 
   <style>
-    body {
-      font-family: Dosis;
-      font-size: larger;
-      margin: 0;
-      line-height: 1.6;
-      color: #333;
-      background: #fafafa;
-    }
+body {
+  font-family: "Dosis", sans-serif;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  background: var(--bg-main);
+  color: var(--text-secondary);
+}
 
-        /* Navigation */
-.navbar {
-  background-color: #222;
+/* Page hero only */
+body .hero {
+  padding: 3rem 2rem;
+  text-align: center;
+  background: linear-gradient(180deg, var(--bg-main) 0%, var(--bg-section) 100%);
+}
+
+.hero h2 {
+  font-family: "Orbitron", sans-serif;
+  color: var(--text-primary);
+}
+
+.hero p {
+  color: var(--text-secondary);
+}
+
+.hero-swiper {
+  max-width: 900px;
+  margin: 2rem auto 0;
+}
+
+.hero .swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 420px;
+}
+
+.hero .swiper-slide img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-subtle);
+}
+
+/* Overview */
+.overview {
+  background: var(--bg-main);
+  padding: 3rem 2rem;
+  text-align: center;
+}
+
+.overview-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.overview-item {
+  flex: 1 1 250px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  padding: 1.5rem;
+  border-radius: var(--radius-lg);
+  color: var(--text-secondary);
+}
+
+.overview-item h4 {
+  color: var(--accent-secondary);
+  font-family: "Orbitron", sans-serif;
+}
+
+/* Project content sections */
+body .section {
+  padding: 3rem 2rem;
+  max-width: 1100px;
+  margin: 2rem auto;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  background: var(--bg-section);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+}
+
+.section:nth-of-type(even) {
+  flex-direction: row-reverse;
+}
+
+.section > div {
+  flex: 1;
+  min-width: 280px;
+}
+
+.section h3 {
+  color: var(--text-primary);
+  font-family: "Orbitron", sans-serif;
+  margin-bottom: 1rem;
+}
+
+.section p {
+  color: var(--text-secondary);
+  margin-bottom: 0.75rem;
+}
+
+.section img {
+  flex: 0 0 50%;
+  max-width: 500px;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-subtle);
+  cursor: zoom-in;
+}
+
+/* Results */
+.results {
+  background: var(--bg-card);
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.results h2 {
+  color: var(--text-primary);
+  font-family: "Orbitron", sans-serif;
+}
+
+/* Next project */
+.next-project {
+  background: var(--bg-main);
+  padding: 2rem;
+  text-align: center;
+}
+
+.next-project a {
+  display: inline-block;
+  margin: 0.5rem;
+  background: var(--gradient-primary);
   color: #fff;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.next-project .back-projects {
+  background: transparent;
+  border: 1px solid var(--accent-secondary);
+  color: var(--accent-secondary);
+}
+
+/* Lightbox */
+#lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.92);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 9999;
+}
+
+#lightbox.active {
+  visibility: visible;
+  opacity: 1;
+}
+
+#lightbox img {
+  max-width: 90%;
+  max-height: 90%;
+  object-fit: contain;
+  border-radius: var(--radius-md);
+}
+
+#lightbox .close-btn {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 2rem;
+  color: white;
+  cursor: pointer;
+}
+
+/* Force this page to use the global header/footer system */
+.navbar {
+  background: rgba(11, 15, 25, 0.85);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border-subtle);
   padding: 1rem;
 }
 
@@ -36,8 +218,8 @@
 
 .logo {
   font-size: 1.5rem;
-  font-family: "Megrim";
-  font-weight: bold;
+  font-family: "Megrim", cursive;
+  font-weight: normal;
 }
 
 nav {
@@ -46,233 +228,38 @@ nav {
 }
 
 nav a {
-  color: #fff;
+  color: var(--text-primary);
   text-decoration: none;
   font-weight: 500;
-  font-family: Orbitron;
-  font-size: medium;
+  font-family: "Orbitron", sans-serif;
+  font-size: 1rem;
 }
 
 nav a:hover {
-      color: #8124df;
-      text-decoration: underline;
-    }
-
-.hamburger {
-  display: none;
-  font-size: 2rem;
-  cursor: pointer;
-  color: #fff;
+  color: var(--accent-primary);
+  text-decoration: none;
 }
 
-    .hero {
-      background: #f5f5f5;
-      padding: 2rem;
-      text-align: center;
-    }
-
-    .hero img {
-      max-width: 700px;
-      width: 100%;
-      border-radius: 12px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-      margin-top: 1rem;
-    }
-
-    .hero .swiper-slide {
-  display: flex;           /* use flex for alignment */
-  justify-content: center; /* center horizontally */
-  align-items: center;     /* center vertically */
-  height: 400px;           /* or whatever height you want for the carousel */
-  overflow: hidden;
-    }
-
-    .hero .swiper-slide img {
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: contain;     /* fit inside the slide without cropping */
-    display: block;
-    }
-
-    .overview {
-      background: #fff;
-      padding: 3rem 2rem;
-      text-align: center;
-    }
-
-    .overview h3 {
-      margin-bottom: 1rem;
-    }
-
-    .overview-grid {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 2rem;
-      /* margin-top: 2rem; */
-    }
-
-    .overview-item {
-      flex: 1 1 250px;
-      background: #f9f9f9;
-      padding: 1.5rem;
-      border-radius: 12px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1)
-      /* box-shadow: 0 4px 10px rgba(0,0,0,0.05); */
-    }
-
-    .overview-item:hover {
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-      transform: translateY(-2px);
-    }
-
-    .section {
-  padding: 3rem 2rem;
-  max-width: 1100px;
-  margin: auto;
-  display: flex;
-  align-items: center;   /* center image to text vertically */
-  gap: 2rem;
-  box-sizing: border-box;
-}
-
-.section > div {
-  flex: 1;               /* text can grow */
-  min-width: 280px;
-}
-
-.section img {
-  flex: 0 0 50%;         /* image can take up about half the row */
-  max-width: 500px;      /* make it bigger but not overwhelming */
-  width: 100%;
-  height: auto;
-  border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-  display: block;
-  object-fit: contain;
-}
-
-
-    .section:nth-child(even) {
-      flex-direction: row-reverse;
-    }
-
-    .results {
-      background: #fff;
-      padding: 4rem 2rem;
-      text-align: center;
-    }
-
-    .results h2 {
-      margin-bottom: 1rem;
-    }
-
-    .nav-buttons .back-projects {
-  background: #555;
-  color: #fff;
-}
-
-.nav-buttons .back-projects:hover {
-  background: #777;
-}
-
-    .next-project {
-      background: #eee;
-      padding: 2rem;
-      text-align: center;
-    }
-
-    .next-project a {
-      display: inline-block;
-      background: #222;
-      color: #fff;
-      padding: 0.75rem 1.5rem;
-      border-radius: 8px;
-      text-decoration: none;
-      transition: background 0.3s;
-    }
-
-    .next-project a:hover {
-      background: #8124DF;
-    }
-
-    /* Footer */
-    footer {
-    background-color: #222;
-    color: #fff;
-    text-align: center;
-    padding: 1rem 0;
-    margin-top: auto;
-    }
-
-    /* Lightbox overlay */
-#lightbox {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100vw; height: 100vh;
-  background: rgba(0,0,0,0.9);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  visibility: hidden;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  z-index: 9999;
-}
-
-/* Active state */
-#lightbox.active {
-  visibility: visible;
-  opacity: 1;
-}
-
-/* Image inside lightbox */
-#lightbox img {
-  max-width: 90%;
-  max-height: 90%;
-  border-radius: 12px;
-  box-shadow: 0 0 20px rgba(0,0,0,0.8);
-  object-fit: contain;
-}
-
-/* Close button */
-#lightbox .close-btn {
-  position: absolute;
-  top: 20px;
-  right: 30px;
-  font-size: 2rem;
-  color: white;
-  cursor: pointer;
-  background: rgba(0,0,0,0.6);
-  border-radius: 50%;
-  padding: 0.25rem 0.6rem;
-  line-height: 1;
-}
-
-/* Footer */
-.footer {
-  background-color: #222;
-  color: #fff;
+.footer,
+footer {
+  background: var(--bg-section);
+  color: var(--text-secondary);
   text-align: center;
   padding: 1rem 0;
   margin-top: auto;
-  font-family: dosis;
+  border-top: 1px solid var(--border-subtle);
+  font-family: "Dosis", sans-serif;
 }
 
-
 @media (max-width: 768px) {
-  .section {
-    flex-direction: column !important; /* force column stack */
-    align-items: center;
+  body .section,
+  body .section:nth-of-type(even) {
+    flex-direction: column;
     text-align: center;
   }
 
-  .section:nth-of-type(even) {
-    flex-direction: column !important; /* override the row-reverse */
-  }
-
-  .section img {
-    max-width: 100%;   /* let images span full width */
+  .hero .swiper-slide {
+    height: 300px;
   }
 }
   </style>
@@ -301,8 +288,8 @@ nav a:hover {
   <div class="swiper hero-swiper">
     <div class="swiper-wrapper">
       <!-- Slides -->
-      <div class="swiper-slide"><img src="assets/images/MUAhub.png" alt="Logo"></div>
-      <div class="swiper-slide"><img src="assets/images/MUAh_icon.svg" alt="Icon"></div>
+      <div class="swiper-slide"><img class="preview-white" src="assets/images/MUAhub.png" alt="Logo"></div>
+      <div class="swiper-slide"><img class="preview-white" src="assets/images/MUAh_icon.svg" alt="Icon"></div>
       <div class="swiper-slide"><img src="assets/images/Landing Page.png" alt="Landing Page"></div>
     </div>
 

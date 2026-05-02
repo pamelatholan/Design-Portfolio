@@ -8,275 +8,220 @@
   <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&family=Megrim&family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css">
   <style>
-    :root {
-      --accent: #8124df;
-      --bg: #fff;
-      --text: #111;
-      --max-width: 900px;
-      --left-w: 32%;
-      --right-w: 68%;
-    }
-
-    /* Make footer stick to bottom */
-    html, body {
-      height: 100%;
-      margin: 0;
-    }
-
-    body {
-      margin: 0;
-      background: var(--bg);
-      color: var(--text);
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh; /* ensures full viewport height */
-    }
-
-    /* ---------- HEADER ---------- */
-    .navbar {
-      background: #222;
-      color: #fff;
-      padding: 1rem 0;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
-
-    .nav-container {
-      max-width: 1100px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0 1rem;
-    }
-
-    .logo {
-      font-size: 1.5rem;
-      font-family: megrim;
-      font-weight: bold;
-    }
-
-    nav {
-      display: flex;
-      gap: 1.5rem;
-    }
-
-    nav a {
-      color: #fff;
-      text-decoration: none;
-      font-weight: 500;
-      transition: color 0.2s;
-    }
-
-    nav a:hover {
-      color: var(--accent);
-      text-decoration: underline;
-    }
-
-    .hamburger {
-      display: none;
-      font-size: 2rem;
-      cursor: pointer;
-      color: #fff;
-    }
-
     /* ---------- PAGE LAYOUT ---------- */
-    main.page {
-      width: min(95%, 1200px);
-      margin: 2rem auto;
-      padding: 1rem 2rem;
-      flex: 1; /* pushes footer down */
-    }
+main.page {
+  width: min(95%, 1200px);
+  margin: 2rem auto;
+  padding: 2rem;
+  flex: 1;
+  background: var(--bg-section);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+}
 
-    .download-button {
-      display: inline-block;
-      margin-bottom: 1.5rem;
-      padding: 0.6rem 1.2rem;
-      background-color: var(--accent);
-      color: #fff;
-      text-decoration: none;
-      border-radius: 5px;
-      font-weight: 600;
-      transition: background 0.2s;
-    }
+/* ---------- DOWNLOAD BUTTON ---------- */
+.download-button {
+  display: inline-block;
+  margin-bottom: 1.5rem;
+  padding: 0.75rem 1.25rem;
+  background: var(--gradient-primary);
+  color: #fff;
+  text-decoration: none;
+  border-radius: var(--radius-sm);
+  font-family: "Dosis", sans-serif;
+  font-weight: 700;
+  transition: all 0.25s ease;
+}
 
-    .download-button:hover {
-      background-color: #610dc4;
-    }
+.download-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(138, 63, 252, 0.35);
+}
 
-    .header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 20px;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
+/* ---------- HEADER ---------- */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
 
-    .contact {
-      font-family: dosis;
-    }
+.header h1 {
+  margin: 0;
+  font-size: 2.25rem;
+  letter-spacing: 0.5px;
+  color: var(--text-primary);
+}
 
-    .info {
-      font-family: dosis;
-    }
+.title {
+  font-size: 1rem;
+  font-family: "Orbitron", sans-serif;
+  color: var(--accent-secondary);
+}
 
-    h1 {
-      margin: 0;
-      font-size: 2rem;
-      letter-spacing: 0.5px;
-      color: var(--accent);
-    }
+.contact,
+.info {
+  font-family: "Dosis", sans-serif;
+  color: var(--text-secondary);
+}
 
-    .title {
-      font-size: 16px;
-      font-family: "orbitron";
-    }
+.contact a,
+.info a {
+  color: var(--accent-secondary);
+  text-decoration: none;
+}
 
-    .row {
-      display: flex;
-      gap: 30px;
-      flex-wrap: wrap;
-    }
+.contact a:hover,
+.info a:hover {
+  color: var(--accent-primary);
+}
 
-    .left {
-      width: var(--left-w);
-      padding-right: 10px;
-      min-width: 260px;
-    }
+/* ---------- COLUMNS ---------- */
+.row {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
 
-    .right {
-      width: var(--right-w);
-      flex: 1;
-      min-width: 300px;
-    }
+.left {
+  width: 32%;
+  padding-right: 10px;
+  min-width: 260px;
+}
 
-    /* ---------- SECTIONS ---------- */
-    .card {
-      margin-bottom: 1.5rem;
-    }
+.right {
+  width: 68%;
+  flex: 1;
+  min-width: 300px;
+}
 
-    .section-title {
-      font-weight: 700;
-      font-size: 16px;
-      color: var(--accent);
-      margin-bottom: 8px;
-      text-transform: uppercase;
-      font-family: "orbitron";
-    }
+/* ---------- SECTIONS ---------- */
+.info {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+}
 
-  
-    /* ---------- SKILLS ---------- */
-    .skills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-    }
+.section-title {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--accent-secondary);
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+  font-family: "Orbitron", sans-serif;
+}
 
-    .chip {
-      background: #f3f7fb;
-      padding: 5px 10px;
-      border-radius: 6px;
-      font-size: 12px;
-    }
+/* ---------- SKILLS ---------- */
+.skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
 
-    /* ---------- EXPERIENCE ---------- */
-    .role {
-      margin-bottom: 12px;
-    }
+.chip {
+  background: rgba(138, 63, 252, 0.14);
+  color: var(--text-primary);
+  border: 1px solid rgba(138, 63, 252, 0.35);
+  padding: 0.4rem 0.7rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.8rem;
+}
 
-    .role header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 5px;
-    }
+/* ---------- EXPERIENCE ---------- */
+.role {
+  margin-bottom: 1.25rem;
+}
 
-    .role h3 {
-      margin: 0;
-      font-size: 16px;
-      color: #000;
-    }
+.role header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
 
-    .dates {
-      font-size: 12px;
-    }
+.role h3 {
+  margin: 0;
+  font-size: 1rem;
+  color: var(--text-primary);
+}
 
-    .bullets {
-      margin: 8px 0 0 16px;
-      padding: 0;
-    }
+.dates {
+  font-size: 0.85rem;
+  color: var(--accent-secondary);
+}
 
-    .bullets li {
-      margin-bottom: 6px;
-      font-size: 16px;
-    }
+.bullets {
+  margin: 0.75rem 0 0 1rem;
+  padding: 0;
+}
 
-    /* ---------- FOOTER ---------- */
-    .footer {
-      background-color: #222;
-      color: #fff;
-      text-align: center;
-      padding: 1rem 0;
-      margin-top: auto;
-      font-family: dosis;
-    }
+.bullets li {
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--text-secondary);
+}
 
-    /* ---------- RESPONSIVE ---------- */
-    @media (max-width: 780px) {
-      #nav-links {
-        display: none;
-        flex-direction: column;
-        background-color: #222;
-        position: absolute;
-        top: 64px;
-        right: 0;
-        width: 100%;
-        text-align: center;
-      }
+.earlier-roles {
+  font-style: italic;
+  color: var(--text-secondary);
+  margin-top: 0.5rem;
+}
 
-      #nav-links.active {
-        display: flex;
-      }
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 780px) {
+  .row {
+    flex-direction: column-reverse;
+  }
 
-      .hamburger {
-        display: block;
-      }
+  .left,
+  .right {
+    width: 100%;
+    min-width: 0;
+  }
 
-      /* Swap columns: right first */
-      .row {
-        flex-direction: column-reverse;
-      }
+  main.page {
+    padding: 1rem;
+  }
 
-      .left,
-      .right {
-        width: 100%;
-        min-width: 0;
-      }
+  .download-button {
+    display: block;
+    text-align: center;
+    margin: 0 auto 1.5rem;
+  }
 
-      .download-button {
-        display: block;
-        text-align: center;
-        margin: 0 auto 1.5rem;
-      }
+  .header {
+    text-align: left;
+    width: 100%;
+  }
+}
 
-      /* Contact info displays full width on mobile */
-      .header {
-        text-align: left;
-        width: 100%;
-        margin-top: 0.5rem;
-      }
-    }
+@media print {
+  body {
+    background: white;
+    color: black;
+  }
 
-    @media print {
-      a.download-button {
-        display: none;
-      }
-    }
+  .navbar,
+  .footer,
+  .download-button {
+    display: none;
+  }
 
-    @supports (-webkit-touch-callout: none) {
+  main.page,
+  .info {
+    background: white;
+    color: black;
+    border: none;
+    box-shadow: none;
+  }
+}
+
+@supports (-webkit-touch-callout: none) {
   body {
     min-height: -webkit-fill-available;
   }
@@ -306,7 +251,7 @@
 
     <div class="header">
       <div>
-        <h1 style="font-family: megrim;">Pamela Tholan</h1>
+          <h1 class="resume-name">Pamela Tholan</h1>
         <div class="title">Product + UX/UI Designer</div>
       </div>
       <div class="contact">
@@ -400,7 +345,7 @@
               <li>Bridged clients, developers, and internal teams to deliver user-centered CRM upgrades and digital solutions.</li>
               <li>Gathered requirements, mapped user journeys, and conducted process testing to identify usability pain points.</li>
               <li>Designed IVR call flows and visualized system logic in Visio for improved customer interactions.</li>
-              <p style="font-style: italic">Earlier roles include: Procurement Specialist, Help Desk Analyst and Facilities Specialist</p>
+              <p class="earlier-roles">Earlier roles include: Procurement Specialist, Help Desk Analyst and Facilities Specialist</p>
             </ul>
           </article>
         </section>

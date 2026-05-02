@@ -9,215 +9,150 @@
   <link rel="stylesheet" href="assets/css/style.css">
   <style>
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      line-height: 1.6;
-      background-color: #f9f9f9;
-      background-image: url('assets/images/new2.svg'); /* Path to the image file */
-      background-size: cover; /* Make sure the image covers the entire screen */
-      background-position: center center; /* Center the image */
-      background-repeat: no-repeat; /* Prevent the image from repeating */
-      color: #333;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-    }
-
-    .navbar {
-      background-color: black;
-      color: white;
-      padding: 1rem 2rem;
-    }
-
-    .nav-container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    #nav-links a {
-      color: white;
-      margin-left: 1rem;
-      text-decoration: none;
-    }
-
-  #nav-links a:hover {
-      color: #8124df;
-      text-decoration: underline;
-    }
-
-    .hamburger {
-      display: none;
-      font-size: 1.5rem;
-      cursor: pointer;
-    }
-
     .projects {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 1rem;
-      padding: 2rem;
-      flex-grow: 1;
-    }
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  padding: 2rem;
+  flex-grow: 1;
+  background: var(--bg-main);
+}
 
-    .project-card {
-      background: white;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      padding: 1rem;
-      transition: max-height 0.5s ease, box-shadow 0.3s ease;
-      overflow: hidden;
-      cursor: pointer;
-      position: relative;
-      max-height: 100px;
-      display: flex;
-      flex-direction: column; /* make the card a column flex container */
-    }
+.project-card {
+  background: var(--bg-card);
+  color: var(--text-primary);
+  border: 1px solid var(--border-subtle);
+  border-radius: 14px;
+  padding: 1rem;
+  transition: all 0.35s ease;
+  overflow: hidden;
+  cursor: pointer;
+  position: relative;
+  max-height: 110px;
+  display: flex;
+  flex-direction: column;
+}
 
-    .project-card.expanded {
-      max-height: none;         /* remove previous max-height limit */
-      min-height: 400px;        /* give all cards same expanded height */
-    }
+.project-card.expanded {
+  max-height: none;
+  min-height: 400px;
+}
 
-    .project-card:hover {
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-      transform: translateY(-2px);
-    }
+.project-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(138, 63, 252, 0.6);
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.45),
+    0 0 22px rgba(138, 63, 252, 0.22);
+}
 
-    .project-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
+.project-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
 
-    .project-info {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
+.project-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
 
-    .project-header img {
-      width: 60px;
-      height: 60px;
-      object-fit: cover;
-      border-radius: 6px;
-    }
+.project-header img {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-subtle);
 
-    .project-header h3 {
-      margin: 0;
-      font-family: dosis;
-    }
+  /* Fix color + background */
+  background: #ffffff;
+  padding: 6px;
+}
 
-    .chevron {
-      transition: transform 0.3s ease;
-    }
+.project-header h3 {
+  margin: 0;
+  font-family: 'Dosis', sans-serif;
+  color: var(--text-primary);
+}
 
-    .project-card.expanded .chevron {
-      transform: rotate(180deg);
-    }
+.chevron {
+  color: var(--accent-secondary);
+  transition: transform 0.3s ease;
+}
 
-    .subtitle {
-      color: #888;
-      margin-top: 0.25rem;
-      font-family: dosis;
-    }
+.project-card.expanded .chevron {
+  transform: rotate(180deg);
+}
 
-    .project-content {
-      display: flex;
-      flex-direction: column;
-      flex-grow: 1;           /* fill remaining space inside card */
-      gap: 0.5rem;
-      opacity: 0;
-      transform: translateY(-10px);
-      transition: opacity 0.4s ease, transform 0.4s ease;
-    }
+.subtitle {
+  color: var(--text-secondary);
+  margin-top: 0.25rem;
+  font-family: 'Dosis', sans-serif;
+}
 
-    .project-content a {
-      align-self: flex-start;
-      margin-top: auto;         /* pushes link to bottom of card content */
-      color: #007BFF;
-      font-family: dosis;
-      font-weight: 500;
-      transition: color 0.3s ease;
-      font-size: large;
-    }
+.project-content {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  gap: 0.5rem;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
 
-    .project-content a:hover {
-      color: #0056b3;
-      text-decoration: underline;
-    }
+.project-card.expanded .project-content {
+  opacity: 1;
+  transform: translateY(0);
+  margin-top: 1rem;
+}
 
-    .project-card.expanded .project-content {
-      opacity: 1;
-      transform: translateY(0);
-      margin-top: 1rem;
-    }
+.project-content .content-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  flex-grow: 1;
+}
 
-    .project-content .content-body {
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-      flex-grow: 1;
-    }
+.summary {
+  font-family: 'Dosis', sans-serif;
+  color: var(--text-secondary);
+}
 
-    .project-content img.preview {
-      max-width: 100%;
-      border-radius: 6px;
-    }
+.project-content img.preview {
+  background: transparent;
+  padding: 0;
+  border-radius: var(--radius-md);
+}
 
-    .summary {
-      font-family: dosis;
-    }
+.project-content a {
+  align-self: flex-start;
+  margin-top: auto;
+  color: var(--accent-secondary);
+  text-decoration: none;
+  font-family: 'Dosis', sans-serif;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+}
 
-    .project-content a {
-      margin-top: auto;        /* pushes link to bottom */
-      color: #007BFF;
-      text-decoration: none;
-      font-family: dosis;
-      font-weight: 500;
-    }
+.project-content a:hover {
+  color: var(--accent-primary);
+  text-shadow: 0 0 12px rgba(138, 63, 252, 0.45);
+}
 
-    .project-content a:hover {
-      color: #0056b3;
-    }
+@media (min-width: 768px) {
+  .projects {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
 
-    .footer {
-      background: black;
-      color: white;
-      text-align: center;
-      padding: 1rem;
-    }
-
-    @media (min-width: 768px) {
-      .projects {
-        grid-template-columns: repeat(3, 1fr);
-      }
-
-      .hamburger {
-        display: none;
-      }
-    }
-
-    @media (max-width: 768px) {
-      #nav-links {
-        display: none;
-        flex-direction: column;
-        background-color: #333;
-      }
-
-      #nav-links a {
-        margin: 1rem 0;
-      }
-
-      .hamburger {
-        display: block;
-      }
-    }
+@media (max-width: 768px) {
+  .projects {
+    padding: 1rem;
+  }
+}
   </style>
 </head>
 <body>
@@ -297,7 +232,7 @@
         <div class="content-body">
         <p class="summary">Built a multi-user platform for showcasing makeup artists. Focused on inclusive design, clean UI, and user-led feedback loops.</p>
         <br>
-        <img class="preview" src="assets/images/MUAhub.png" alt="MUAhub Screenshot" />
+        <img class="preview-white" src="assets/images/MUAhub.png" alt="MUAhub Screenshot" />
       <a href="muahub.html">View Project</a>  
       </div>
         
@@ -315,10 +250,9 @@
       card.classList.toggle("expanded");
     }
 
-    document.getElementById('hamburger').addEventListener('click', () => {
-      const navLinks = document.getElementById('nav-links');
-      navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
-    });
+    document.getElementById("hamburger").addEventListener("click", () => {
+  document.getElementById("nav-links").classList.toggle("active");
+});
   </script>
 </body>
 </html>
