@@ -21,17 +21,82 @@
   margin: 2rem auto 0;
   padding: 0 2rem;
   font-family: 'Dosis', sans-serif;
-  color: var(--text-secondary);
+  color: var(--accent-secondary);
 }
 
-.filter-bar select {
-  margin-left: 0.5rem;
-  padding: 0.5rem;
-  font-size: 1rem;
+.filter-label {
+  margin-right: 0.5rem;
+}
+
+.custom-select {
+  position: relative;
+  display: inline-block;
+  min-width: 190px;
+}
+
+.custom-select-trigger {
+  width: 100%;
+  padding: 0.4rem 0.8rem;
   border-radius: 8px;
   background: var(--bg-card);
   color: var(--text-primary);
   border: 1px solid var(--border-subtle);
+  font-family: 'Dosis', sans-serif;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.custom-select-trigger:hover,
+.custom-select.open .custom-select-trigger {
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 0 2px rgba(138, 63, 252, 0.25);
+}
+
+.custom-options {
+  position: absolute;
+  top: calc(100% + 0.4rem);
+  left: 0;
+  right: 0;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 10px;
+  overflow: hidden;
+  display: none;
+  z-index: 20;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45);
+}
+
+.custom-select.open .custom-options {
+  display: block;
+}
+
+.custom-options button {
+  width: 100%;
+  padding: 0.65rem 0.8rem;
+  background: transparent;
+  color: var(--text-primary);
+  border: none;
+  text-align: left;
+  font-family: 'Dosis', sans-serif;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.custom-options button:hover {
+  background: var(--gradient-primary);
+  color: #fff;
+}
+
+.custom-select-trigger i {
+  color: var(--accent-secondary);
+  transition: transform 0.25s ease;
+}
+
+.custom-select.open .custom-select-trigger i {
+  transform: rotate(180deg);
 }
 
 main {
@@ -196,13 +261,21 @@ main {
   </header>
 
   <div class="filter-bar">
-    <label for="filter">Filter by Topic:</label>
-    <select id="filter">
-      <option value="all">All</option>
-      <option value="generative-ai">Generative AI</option>
-      <option value="ux-research">UX Research</option>
-      <option value="ux-ui-design">UX/UI Design</option>
-    </select>
+    <span class="filter-label">Filter by Topic:</span>
+
+<div class="custom-select" id="customFilter">
+  <button class="custom-select-trigger" type="button">
+    <span>All</span>
+    <i class="fas fa-chevron-down"></i>
+  </button>
+
+  <div class="custom-options">
+    <button type="button" data-value="all">All</button>
+    <button type="button" data-value="generative-ai">Generative AI</button>
+    <button type="button" data-value="ux-research">UX Research</button>
+    <button type="button" data-value="ux-ui-design">UX/UI Design</button>
+  </div>
+</div>
   </div>
 
   <main>
@@ -432,16 +505,36 @@ main {
 
   <script>
     // Filter functionality
-    const filterSelect = document.getElementById('filter');
-    const caseStudies = document.querySelectorAll('.case-study');
+    const customFilter = document.getElementById('customFilter');
+const trigger = customFilter.querySelector('.custom-select-trigger');
+const triggerText = trigger.querySelector('span');
+const options = customFilter.querySelectorAll('.custom-options button');
+const caseStudies = document.querySelectorAll('.case-study');
 
-    filterSelect.addEventListener('change', () => {
-      const value = filterSelect.value;
-      caseStudies.forEach(section => {
-        const matches = value === 'all' || section.classList.contains(value);
-        section.style.display = matches ? 'block' : 'none';
-      });
+trigger.addEventListener('click', () => {
+  customFilter.classList.toggle('open');
+});
+
+options.forEach(option => {
+  option.addEventListener('click', () => {
+    const value = option.dataset.value;
+    const text = option.textContent;
+
+    triggerText.textContent = text;
+    customFilter.classList.remove('open');
+
+    caseStudies.forEach(section => {
+      const matches = value === 'all' || section.classList.contains(value);
+      section.style.display = matches ? 'block' : 'none';
     });
+  });
+});
+
+document.addEventListener('click', event => {
+  if (!customFilter.contains(event.target)) {
+    customFilter.classList.remove('open');
+  }
+});
 
     // Expand/collapse sections
     document.querySelectorAll('.case-study').forEach(header => {
