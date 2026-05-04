@@ -28,7 +28,7 @@ body .hero {
 
 .hero h2 {
   font-family: "Orbitron", sans-serif;
-  color: var(--text-primary);
+  color: var(--accent-secondary);
 }
 
 .hero p {
@@ -38,6 +38,7 @@ body .hero {
 .hero-swiper {
   max-width: 900px;
   margin: 2rem auto 0;
+  --swiper-navigation-color: var(--accent-secondary);
 }
 
 .hero .swiper-slide {
@@ -45,6 +46,11 @@ body .hero {
   justify-content: center;
   align-items: center;
   height: 420px;
+}
+
+.hero .swiper-slide img.preview-white {
+  max-width: 85%;
+  max-height: 85%;
 }
 
 .hero .swiper-slide img {
