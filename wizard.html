@@ -10,6 +10,16 @@
   <link rel="stylesheet" href="assets/css/style.css">
 
   <style>
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
 body {
   font-family: "Dosis", sans-serif;
   font-size: 1.1rem;
@@ -165,7 +175,7 @@ body .section {
   color: var(--accent-secondary);
 }
 
-/* Lightbox */
+/* Enhanced carousel lightbox for section images */
 #lightbox {
   position: fixed;
   inset: 0;
@@ -177,6 +187,7 @@ body .section {
   opacity: 0;
   transition: opacity 0.3s ease;
   z-index: 9999;
+  padding: 2rem;
 }
 
 #lightbox.active {
@@ -184,20 +195,155 @@ body .section {
   opacity: 1;
 }
 
-#lightbox img {
-  max-width: 90%;
-  max-height: 90%;
+.lightbox-content {
+  position: relative;
+  width: min(1100px, 92vw);
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.lightbox-image-wrap {
+  width: 100%;
+  height: min(680px, 72vh);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#lightbox-image {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
   object-fit: contain;
   border-radius: var(--radius-md);
+  border: 1px solid var(--border-subtle);
+  opacity: 1;
+  transition: opacity 0.25s ease;
+}
+
+#lightbox-image.fade {
+  opacity: 0;
+}
+
+#lightbox-counter,
+#lightbox-caption {
+  color: var(--text-primary);
+  font-family: "Dosis", sans-serif;
+}
+
+#lightbox-counter {
+  margin-bottom: 0.75rem;
+  background: rgba(11, 15, 25, 0.75);
+  border: 1px solid var(--border-subtle);
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+}
+
+#lightbox-caption {
+  margin-top: 0.75rem;
+  margin-bottom: 0;
+  color: var(--text-secondary);
+}
+
+#lightbox-thumbnails {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+  flex-wrap: wrap;
+  max-width: 100%;
+}
+
+#lightbox-thumbnails img {
+  width: 70px;
+  height: 45px;
+  object-fit: cover;
+  border-radius: 6px;
+  cursor: pointer;
+  opacity: 0.5;
+  border: 2px solid transparent;
+  transition: opacity 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+}
+
+#lightbox-thumbnails img:hover,
+#lightbox-thumbnails img.active {
+  opacity: 1;
+  border-color: var(--accent-secondary);
+  transform: translateY(-2px);
+}
+
+#lightbox .close-btn,
+#lightbox .lightbox-prev,
+#lightbox .lightbox-next {
+  position: absolute;
+  border: none;
+  color: #fff;
+  background: rgba(11, 15, 25, 0.75);
+  border: 1px solid var(--border-subtle);
+  cursor: pointer;
+  z-index: 10000;
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
 #lightbox .close-btn {
-  position: absolute;
-  top: 20px;
-  right: 30px;
+  top: 1rem;
+  right: 1rem;
   font-size: 2rem;
-  color: white;
-  cursor: pointer;
+  line-height: 1;
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+}
+
+#lightbox .lightbox-prev,
+#lightbox .lightbox-next {
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2rem;
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-sm);
+}
+
+#lightbox .lightbox-prev {
+  left: 1rem;
+}
+
+#lightbox .lightbox-next {
+  right: 1rem;
+}
+
+#lightbox .close-btn:hover,
+#lightbox .lightbox-prev:hover,
+#lightbox .lightbox-next:hover {
+  background: var(--accent-secondary);
+  color: var(--bg-main);
+}
+
+@media (max-width: 768px) {
+  #lightbox {
+    padding: 1rem;
+  }
+
+  .lightbox-image-wrap {
+    height: 62vh;
+  }
+
+  #lightbox .lightbox-prev,
+  #lightbox .lightbox-next {
+    font-size: 1.5rem;
+    padding: 0.5rem 0.75rem;
+  }
+
+  #lightbox .lightbox-prev {
+    left: 0.5rem;
+  }
+
+  #lightbox .lightbox-next {
+    right: 0.5rem;
+  }
 }
 
 /* Force this page to use the global header/footer system */
@@ -288,9 +434,9 @@ footer {
   <div class="swiper hero-swiper">
     <div class="swiper-wrapper">
       <!-- Slides -->
-      <div class="swiper-slide"><img src="assets/images/new_landing.png" alt="Preview 1"></div>
-      <div class="swiper-slide"><img src="assets/images/wizard_results.png" alt="Preview 2"></div>
-      <div class="swiper-slide"><img src="assets/images/Response_XPE Promotor.png" alt="Preview 3"></div>
+      <div class="swiper-slide"><img src="assets/images/new_landing.png" alt="New Landing Page"></div>
+      <div class="swiper-slide"><img src="assets/images/wizard_results.png" alt="AI Results"></div>
+      <div class="swiper-slide"><img src="assets/images/Response_XPE Promotor.png" alt="Promotor Info"></div>
     </div>
 
     <!-- Pagination dots -->
@@ -331,7 +477,13 @@ footer {
         <p>The redesign laid the groundwork for creating the enhanced experience of the generative AI XPE Wizard.</p>
         <p>The new login page was designed to create a better layout for the space that didn’t push the most important info, the actual login, down the page.  Incorporating updated brand imagery and colors created a more modern page and experience.</p>
     </div>
-    <img src="assets/images/xpe_layout_login.png" alt="Login" class="clickable-img">
+    <img
+      src="assets/images/XPE Login_Final.png"
+      alt="Login"
+      class="clickable-img"
+      data-images="assets/images/xpe login_final.png, assets/images/original login page.png, assets/images/xpe_login iteration 1.png, assets/images/xpe_login iteration 2.png"
+      data-captions="Login Redesign, Original Login, Login Iteration 1, Login Iteration 2"
+    >
   </section>
 
       <section class="section">
@@ -341,7 +493,13 @@ footer {
         <p>The redesign of the landing page was the biggest improvement.  Employees were given options that allowed them to start or change services, view existing requests or view additional information about all products and services that were being offered to them.</p>
         <p>The business partners wanted the site to have more of an ecommerce feel, which is why I chose to use a grid layout to display product and service info.  The initial iteration had tiles that when hovered over displayed information, but due to the large volume of text that had to be displayed, we ultimately went with the grid layout.</p>
     </div>
-    <img src="assets/images/xpe_layout.png" alt="Product Page" class="clickable-img">
+    <img
+      src="assets/images/Landing Page_Final.png"
+      alt="Product Page"
+      class="clickable-img"
+      data-images="assets/images/landing page_final.png, assets/images/landing page_iteration 1.png, assets/images/landing page_iteration 2.png"
+      data-captions="Landing Page Design, Landing Page Iteration 1, Landing Page Iteration 2"
+    >
   </section>
 
       <section class="section">
@@ -353,7 +511,13 @@ footer {
            We also added a feature for certain products and services where additional information would populate in a separate response box below the answer to the question asked.  
            For example, if you asked what discounts were available for Xfinity Home, the XPE Wizard would answer your question and then a video about home security would populate in what we called the Promoter box.  This allowed the user to educate themselves further on the subject of their original query.</p>
     </div>
-    <img src="assets/images/xpe_layout_wizard.png" alt="AI" class="clickable-img">
+    <img
+      src="assets/images/Wizard_Prompts_bottom.png"
+      alt="AI"
+      class="clickable-img"
+      data-images="assets/images/wizard_prompts_bottom.png, assets/images/wizard_prompts_top.png, assets/images/Response_menu closed.png, assets/images/Response_menu open.png, assets/images/Response_XPE Promotor.png"
+      data-captions="XPE Wizard, XPE Wizard Iteration 2, Response Page, Response Page with Menu Open, Response with Promotor Info"
+    >
   </section>
 
   <!-- <section class="section">
@@ -389,6 +553,10 @@ footer {
 
 <script>
   document.addEventListener("DOMContentLoaded", function () {
+    if (window.AOS) {
+      AOS.init({ duration: 1000, once: true });
+    }
+
     new Swiper(".hero-swiper", {
       loop: true,
       autoplay: {
@@ -408,36 +576,155 @@ footer {
     const lightbox = document.createElement("div");
     lightbox.id = "lightbox";
     lightbox.innerHTML = `
-      <span class="close-btn">&times;</span>
-      <img src="" alt="Expanded image">
+      <button class="close-btn" aria-label="Close image carousel">&times;</button>
+      <button class="lightbox-prev" aria-label="Previous image">&#10094;</button>
+
+      <div class="lightbox-content">
+        <p id="lightbox-counter" aria-live="polite"></p>
+
+        <div class="lightbox-image-wrap">
+          <img id="lightbox-image" src="" alt="Expanded project image">
+        </div>
+
+        <p id="lightbox-caption"></p>
+        <div id="lightbox-thumbnails" aria-label="Project image thumbnails"></div>
+      </div>
+
+      <button class="lightbox-next" aria-label="Next image">&#10095;</button>
     `;
     document.body.appendChild(lightbox);
 
-    const lightboxImg = lightbox.querySelector("img");
-    const closeBtn = lightbox.querySelector(".close-btn");
+    const lightboxImage = document.getElementById("lightbox-image");
+    const counter = document.getElementById("lightbox-counter");
+    const caption = document.getElementById("lightbox-caption");
+    const thumbnails = document.getElementById("lightbox-thumbnails");
 
-    document.querySelectorAll(".section img").forEach(function (img) {
+    const closeBtn = lightbox.querySelector(".close-btn");
+    const prevBtn = lightbox.querySelector(".lightbox-prev");
+    const nextBtn = lightbox.querySelector(".lightbox-next");
+
+    let currentImages = [];
+    let currentCaptions = [];
+    let currentIndex = 0;
+    let touchStartX = 0;
+
+    function getFallbackCaption(src) {
+      const fileName = src.split("/").pop().split(".")[0];
+      return fileName.replace(/[_-]/g, " ");
+    }
+
+    function buildThumbnails() {
+      thumbnails.innerHTML = "";
+
+      currentImages.forEach(function (src, index) {
+        const thumb = document.createElement("img");
+        thumb.src = src;
+        thumb.alt = currentCaptions[index] || `Slide ${index + 1}`;
+
+        thumb.addEventListener("click", function (event) {
+          event.stopPropagation();
+          showImage(index);
+        });
+
+        thumbnails.appendChild(thumb);
+      });
+    }
+
+    function updateLightbox() {
+      if (!currentImages.length) return;
+
+      lightboxImage.classList.add("fade");
+
+      setTimeout(function () {
+        lightboxImage.src = currentImages[currentIndex];
+        lightboxImage.alt = currentCaptions[currentIndex] || "Expanded project image";
+        counter.textContent = `${currentIndex + 1} / ${currentImages.length}`;
+        caption.textContent = currentCaptions[currentIndex] || "";
+
+        thumbnails.querySelectorAll("img").forEach(function (thumb, index) {
+          thumb.classList.toggle("active", index === currentIndex);
+        });
+
+        const showControls = currentImages.length > 1;
+        prevBtn.style.display = showControls ? "block" : "none";
+        nextBtn.style.display = showControls ? "block" : "none";
+        counter.style.display = showControls ? "inline-block" : "none";
+        thumbnails.style.display = showControls ? "flex" : "none";
+
+        lightboxImage.classList.remove("fade");
+      }, 150);
+    }
+
+    function showImage(index) {
+      currentIndex = (index + currentImages.length) % currentImages.length;
+      updateLightbox();
+    }
+
+    function openLightbox(img) {
+      currentImages = img.dataset.images
+        ? img.dataset.images.split(",").map(src => src.trim())
+        : [img.getAttribute("src")];
+
+      currentCaptions = img.dataset.captions
+        ? img.dataset.captions.split(",").map(text => text.trim())
+        : currentImages.map(src => getFallbackCaption(src));
+
+      const clickedImageIndex = currentImages.indexOf(img.getAttribute("src"));
+      currentIndex = clickedImageIndex >= 0 ? clickedImageIndex : 0;
+
+      buildThumbnails();
+      updateLightbox();
+      lightbox.classList.add("active");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove("active");
+      document.body.style.overflow = "";
+    }
+
+    document.querySelectorAll(".clickable-img").forEach(function (img) {
       img.addEventListener("click", function () {
-        lightbox.classList.add("active");
-        lightboxImg.src = img.src;
-        lightboxImg.alt = img.alt;
+        openLightbox(img);
       });
     });
 
-    closeBtn.addEventListener("click", function () {
-      lightbox.classList.remove("active");
+    nextBtn.addEventListener("click", function (event) {
+      event.stopPropagation();
+      showImage(currentIndex + 1);
     });
+
+    prevBtn.addEventListener("click", function (event) {
+      event.stopPropagation();
+      showImage(currentIndex - 1);
+    });
+
+    closeBtn.addEventListener("click", closeLightbox);
 
     lightbox.addEventListener("click", function (event) {
       if (event.target === lightbox) {
-        lightbox.classList.remove("active");
+        closeLightbox();
       }
     });
 
     document.addEventListener("keydown", function (event) {
-      if (event.key === "Escape") {
-        lightbox.classList.remove("active");
-      }
+      if (!lightbox.classList.contains("active")) return;
+
+      if (event.key === "Escape") closeLightbox();
+      if (event.key === "ArrowRight") showImage(currentIndex + 1);
+      if (event.key === "ArrowLeft") showImage(currentIndex - 1);
+    });
+
+    lightbox.addEventListener("touchstart", function (event) {
+      touchStartX = event.changedTouches[0].screenX;
+    });
+
+    lightbox.addEventListener("touchend", function (event) {
+      const touchEndX = event.changedTouches[0].screenX;
+      const difference = touchStartX - touchEndX;
+
+      if (difference > 50) showImage(currentIndex + 1);
+      if (difference < -50) showImage(currentIndex - 1);
     });
 
     const hamburger = document.getElementById("hamburger");

@@ -175,7 +175,7 @@ body .section {
   color: var(--accent-secondary);
 }
 
-/* Lightbox */
+/* Lightbox carousel */
 #lightbox {
   position: fixed;
   inset: 0;
@@ -187,6 +187,7 @@ body .section {
   opacity: 0;
   transition: opacity 0.3s ease;
   z-index: 9999;
+  padding: 2rem;
 }
 
 #lightbox.active {
@@ -194,20 +195,157 @@ body .section {
   opacity: 1;
 }
 
-#lightbox img {
-  max-width: 90%;
-  max-height: 90%;
+.lightbox-content {
+  position: relative;
+  width: min(1100px, 92vw);
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.lightbox-image-wrap {
+  width: 100%;
+  height: min(680px, 72vh);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#lightbox-image {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
   object-fit: contain;
   border-radius: var(--radius-md);
+  border: 1px solid var(--border-subtle);
+  opacity: 1;
+  transition: opacity 0.25s ease;
+}
+
+#lightbox-image.fade {
+  opacity: 0;
+}
+
+#lightbox-counter,
+#lightbox-caption {
+  color: var(--text-primary);
+  font-family: "Dosis", sans-serif;
+}
+
+#lightbox-counter {
+  margin-bottom: 0.75rem;
+  background: rgba(11, 15, 25, 0.75);
+  border: 1px solid var(--border-subtle);
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+}
+
+#lightbox-caption {
+  margin-top: 0.75rem;
+  margin-bottom: 0;
+  color: var(--text-secondary);
+}
+
+#lightbox-thumbnails {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+  flex-wrap: wrap;
+  max-width: 100%;
+}
+
+#lightbox-thumbnails img {
+  width: 70px;
+  height: 45px;
+  object-fit: cover;
+  border-radius: 6px;
+  cursor: pointer;
+  opacity: 0.5;
+  border: 2px solid transparent;
+  transition: opacity 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+}
+
+#lightbox-thumbnails img:hover,
+#lightbox-thumbnails img.active {
+  opacity: 1;
+  border-color: var(--accent-secondary);
+  transform: translateY(-2px);
+}
+
+#lightbox .close-btn,
+#lightbox .lightbox-prev,
+#lightbox .lightbox-next {
+  position: absolute;
+  border: none;
+  color: #fff;
+  background: rgba(11, 15, 25, 0.75);
+  border: 1px solid var(--border-subtle);
+  cursor: pointer;
+  z-index: 10000;
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
 #lightbox .close-btn {
-  position: absolute;
-  top: 20px;
-  right: 30px;
+  top: 1rem;
+  right: 1rem;
   font-size: 2rem;
-  color: white;
-  cursor: pointer;
+  line-height: 1;
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+}
+
+#lightbox .lightbox-prev,
+#lightbox .lightbox-next {
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2rem;
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-sm);
+}
+
+#lightbox .lightbox-prev {
+  left: 1rem;
+}
+
+#lightbox .lightbox-next {
+  right: 1rem;
+}
+
+#lightbox .close-btn:hover,
+#lightbox .lightbox-prev:hover,
+#lightbox .lightbox-next:hover {
+  background: var(--accent-secondary);
+  color: var(--bg-main);
+}
+
+@media (max-width: 768px) {
+  #lightbox {
+    padding: 1rem;
+  }
+
+  .lightbox-content {
+    width: 92vw;
+    max-height: 88vh;
+  }
+
+  .lightbox-image-wrap {
+    height: 64vh;
+  }
+
+  #lightbox .lightbox-prev,
+  #lightbox .lightbox-next {
+    font-size: 1.5rem;
+    padding: 0.5rem 0.75rem;
+  }
+
+  #lightbox-thumbnails img {
+    width: 54px;
+    height: 36px;
+  }
 }
 
 /* Force this page to use the global header/footer system */
@@ -410,116 +548,175 @@ footer {
   <footer class="footer">
     <p>© 2025 Pam Tholan. All rights reserved.</p>
   </footer>
-
   <!-- Animation Library -->
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-  <script>AOS.init({ duration: 1000, once: true });</script>
 
   <!-- Swiper JS -->
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
 <script>
-  const heroSwiper = new Swiper('.hero-swiper', {
-    loop: true,
-    autoplay: {
-      delay: 4000,
-      disableOnInteraction: false,
-    },
-    pagination: {
-      el: '.swiper-pagination',
-      clickable: true,
-    },
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
-    },
-  });
+  document.addEventListener("DOMContentLoaded", function () {
+    AOS.init({ duration: 1000, once: true });
 
-  // Create lightbox element
-  const lightbox = document.createElement('div');
-  lightbox.id = 'lightbox';
-  lightbox.innerHTML = `
-    <span class="close-btn">&times;</span>
-    <img src="" alt="Expanded image">
-  `;
-  document.body.appendChild(lightbox);
-
-  const lightboxImg = lightbox.querySelector('img');
-  const closeBtn = lightbox.querySelector('.close-btn');
-
-  // Open lightbox when clicking section images
-  document.querySelectorAll('.section img').forEach(img => {
-    img.style.cursor = 'zoom-in'; // add hover feedback
-    img.addEventListener('click', () => {
-      lightbox.classList.add('active');
-      lightboxImg.src = img.src;
-      lightboxImg.alt = img.alt;
+    new Swiper(".hero-swiper", {
+      loop: true,
+      autoplay: {
+        delay: 4000,
+        disableOnInteraction: false
+      },
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true
+      },
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev"
+      }
     });
-  });
 
-  // Close lightbox
-  closeBtn.addEventListener('click', () => {
-    lightbox.classList.remove('active');
-  });
+    const projectImages = Array.from(document.querySelectorAll(".clickable-img"));
 
-  // Close if clicking outside the image
-  lightbox.addEventListener('click', e => {
-    if (e.target === lightbox) {
-      lightbox.classList.remove('active');
-    }
-  });
+    const lightbox = document.createElement("div");
+    lightbox.id = "lightbox";
+    lightbox.innerHTML = `
+      <button class="close-btn" aria-label="Close image carousel">&times;</button>
+      <button class="lightbox-prev" aria-label="Previous image">&#10094;</button>
 
-  // Close on ESC key
-  document.addEventListener('keydown', e => {
-    if (e.key === "Escape") {
-      lightbox.classList.remove('active');
-    }
-  });
+      <div class="lightbox-content">
+        <p id="lightbox-counter" aria-live="polite"></p>
 
+        <div class="lightbox-image-wrap">
+          <img id="lightbox-image" src="" alt="Expanded project image">
+        </div>
 
+        <p id="lightbox-caption"></p>
+        <div id="lightbox-thumbnails" aria-label="Project image thumbnails"></div>
+      </div>
 
-      document.addEventListener("DOMContentLoaded", () => {
-      AOS.init({ duration: 1000, once: true });
+      <button class="lightbox-next" aria-label="Next image">&#10095;</button>
+    `;
+    document.body.appendChild(lightbox);
 
-      const heroSwiper = new Swiper(".hero-swiper", {
-        loop: true,
-        autoplay: { delay: 4000, disableOnInteraction: false },
-        pagination: { el: ".swiper-pagination", clickable: true },
-        navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
-      });
+    const lightboxImage = document.getElementById("lightbox-image");
+    const counter = document.getElementById("lightbox-counter");
+    const caption = document.getElementById("lightbox-caption");
+    const thumbnails = document.getElementById("lightbox-thumbnails");
 
-      // ✅ Fix footer overlap on initial load
-      setTimeout(() => {
-        window.dispatchEvent(new Event("resize"));
-      }, 600); // wait for animations/swiper to finish calculating height
+    const closeBtn = lightbox.querySelector(".close-btn");
+    const prevBtn = lightbox.querySelector(".lightbox-prev");
+    const nextBtn = lightbox.querySelector(".lightbox-next");
 
-      // Lightbox setup
-      const lightbox = document.createElement("div");
-      lightbox.id = "lightbox";
-      lightbox.innerHTML = `<span class="close-btn">&times;</span><img src="" alt="Expanded image">`;
-      document.body.appendChild(lightbox);
+    let currentImages = projectImages.map(img => img.getAttribute("src"));
+    let currentCaptions = projectImages.map(img => img.getAttribute("alt") || "Project image");
+    let currentIndex = 0;
+    let touchStartX = 0;
 
-      const lightboxImg = lightbox.querySelector("img");
-      const closeBtn = lightbox.querySelector(".close-btn");
+    function buildThumbnails() {
+      thumbnails.innerHTML = "";
 
-      document.querySelectorAll(".section img").forEach(img => {
-        img.addEventListener("click", () => {
-          lightbox.classList.add("active");
-          lightboxImg.src = img.src;
-          lightboxImg.alt = img.alt;
+      currentImages.forEach(function (src, index) {
+        const thumb = document.createElement("img");
+        thumb.src = src;
+        thumb.alt = currentCaptions[index] || `Slide ${index + 1}`;
+
+        thumb.addEventListener("click", function (event) {
+          event.stopPropagation();
+          showImage(index);
         });
-      });
 
-      closeBtn.addEventListener("click", () => lightbox.classList.remove("active"));
-      lightbox.addEventListener("click", e => {
-        if (e.target === lightbox) lightbox.classList.remove("active");
+        thumbnails.appendChild(thumb);
       });
-      document.addEventListener("keydown", e => {
-        if (e.key === "Escape") lightbox.classList.remove("active");
+    }
+
+    function updateLightbox() {
+      lightboxImage.classList.add("fade");
+
+      setTimeout(function () {
+        lightboxImage.src = currentImages[currentIndex];
+        lightboxImage.alt = currentCaptions[currentIndex] || "Expanded project image";
+        counter.textContent = `${currentIndex + 1} / ${currentImages.length}`;
+        caption.textContent = currentCaptions[currentIndex] || "";
+
+        thumbnails.querySelectorAll("img").forEach(function (thumb, index) {
+          thumb.classList.toggle("active", index === currentIndex);
+        });
+
+        lightboxImage.classList.remove("fade");
+      }, 150);
+    }
+
+    function showImage(index) {
+      if (!currentImages.length) return;
+      currentIndex = (index + currentImages.length) % currentImages.length;
+      updateLightbox();
+    }
+
+    function openLightbox(index) {
+      currentIndex = index;
+      buildThumbnails();
+      updateLightbox();
+      lightbox.classList.add("active");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove("active");
+      document.body.style.overflow = "";
+    }
+
+    projectImages.forEach(function (img, index) {
+      img.addEventListener("click", function () {
+        openLightbox(index);
       });
     });
 
+    nextBtn.addEventListener("click", function (event) {
+      event.stopPropagation();
+      showImage(currentIndex + 1);
+    });
 
+    prevBtn.addEventListener("click", function (event) {
+      event.stopPropagation();
+      showImage(currentIndex - 1);
+    });
+
+    closeBtn.addEventListener("click", closeLightbox);
+
+    lightbox.addEventListener("click", function (event) {
+      if (event.target === lightbox) {
+        closeLightbox();
+      }
+    });
+
+    document.addEventListener("keydown", function (event) {
+      if (!lightbox.classList.contains("active")) return;
+
+      if (event.key === "Escape") closeLightbox();
+      if (event.key === "ArrowRight") showImage(currentIndex + 1);
+      if (event.key === "ArrowLeft") showImage(currentIndex - 1);
+    });
+
+    lightbox.addEventListener("touchstart", function (event) {
+      touchStartX = event.changedTouches[0].screenX;
+    });
+
+    lightbox.addEventListener("touchend", function (event) {
+      const touchEndX = event.changedTouches[0].screenX;
+      const difference = touchStartX - touchEndX;
+
+      if (difference > 50) showImage(currentIndex + 1);
+      if (difference < -50) showImage(currentIndex - 1);
+    });
+
+    const hamburger = document.getElementById("hamburger");
+    const navLinks = document.getElementById("nav-links");
+
+    if (hamburger && navLinks) {
+      hamburger.addEventListener("click", function () {
+        navLinks.classList.toggle("active");
+      });
+    }
+  });
 </script>
 </body>
 </html>
