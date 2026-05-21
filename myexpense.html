@@ -10,6 +10,16 @@
   <link rel="stylesheet" href="assets/css/style.css">
 
   <style>
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
 body {
   font-family: "Dosis", sans-serif;
   font-size: 1.1rem;
@@ -467,7 +477,13 @@ footer {
       <p>I was tapped to redesign how expense reports were submitted after working with the project sponsor to help establish UX principles for our organization to use.</p> 
       <p>This included a redesign of the dashboard so it actually functioned like a dashboard and copious form redesign.</p>
     </div>
-    <img src="assets/images/myE_dash_layout.png" alt="Dashboard" class="clickable-img">
+    <img
+      src="assets/images/myE_dash_final.png"
+      alt="Expense Tracking Dashboard"
+      class="clickable-img"
+      data-images="assets/images/myE_dash_final.png, assets/images/original_dash.png, assets/images/myE_dash_it1.png, assets/images/myE_dash_it1_create.png, assets/images/dash_list.png, assets/images/dash_grid.png"
+      data-captions="Expense Tracking Dashboard, Original Dashboard, Dashboard Iteration 1, Dashboard Iteration 1 Create Exp, List View, Grid View"
+    >
   </section>
 
   <section class="section">
@@ -479,8 +495,13 @@ footer {
             <p>Initially I wanted to have the dashboard utilize widgets so everything could be done within it’s allotted space on the page.</p>
             <p>There was just too much information required when submitting an expense report to have that approach work and still be a great user experience.</p>                           
     </div>
-    <img src="assets/images/myE_create_layout.png" alt="Create Expense" class="clickable-img">
-  </section>
+ <img
+      src="assets/images/myE_dash_final.png"
+      alt="Expense Tracking Dashboard"
+      class="clickable-img"
+      data-images="assets/images/myE_dash_final.png, assets/images/original_dash.png, assets/images/myE_dash_it1.png, assets/images/myE_dash_it1_create.png, assets/images/dash_list.png, assets/images/dash_grid.png"
+      data-captions="Expense Tracking Dashboard, Original Dashboard, Dashboard Iteration 1, Dashboard Iteration 1 Create Exp, List View, Grid View"
+    >  </section>
 
   <section class="section">
     <div>
@@ -490,8 +511,13 @@ footer {
             <p>I also ensured click depth was minimized for menu options.</p>
             <p>I made sure the forms were clear.  Drop down menus provided additional detail on what was being selected to reduce error and all required fields were now labeled.</p>
     </div>
-    <img src="assets/images/myE_attachments_layout.png" alt="Attachments" class="clickable-img">
-  </section>
+ <img
+      src="assets/images/myE_dash_final.png"
+      alt="Expense Tracking Dashboard"
+      class="clickable-img"
+      data-images="assets/images/myE_dash_final.png, assets/images/original_dash.png, assets/images/myE_dash_it1.png, assets/images/myE_dash_it1_create.png, assets/images/dash_list.png, assets/images/dash_grid.png"
+      data-captions="Expense Tracking Dashboard, Original Dashboard, Dashboard Iteration 1, Dashboard Iteration 1 Create Exp, List View, Grid View"
+    >  </section>
 
   <section class="section">
     <div>
@@ -500,8 +526,13 @@ footer {
             <p>There was no use of a grid for content layout, just an endless scroll of fields you maybe had to fill in.</p>
             <p>By implementing columns and collapsible sections, as well as labeling every required field, it made the form less imposing and allowed the user to focus on what was required, adding additional color if needed.</p>
     </div>
-    <img src="assets/images/myE_addexp_layout.png" alt="Add Expense" class="clickable-img">
-  </section>
+ <img
+      src="assets/images/myE_dash_final.png"
+      alt="Expense Tracking Dashboard"
+      class="clickable-img"
+      data-images="assets/images/myE_dash_final.png, assets/images/original_dash.png, assets/images/myE_dash_it1.png, assets/images/myE_dash_it1_create.png, assets/images/dash_list.png, assets/images/dash_grid.png"
+      data-captions="Expense Tracking Dashboard, Original Dashboard, Dashboard Iteration 1, Dashboard Iteration 1 Create Exp, List View, Grid View"
+    >  </section>
 
   <section class="section">
     <div>
@@ -509,8 +540,13 @@ footer {
             <p>In addition to the dashboard and forms, I also redesigned the FAQ page to match the rest of the updated site.</p>
             <p>I was working with the software engineer who had done the initial UI so I ensured I approached any of my suggested changes delicately and with use cases that backed up what I was suggesting.</p>
             <p>This project is currently still active with an anticipated launch in 2025</p>    </div>
-    <img src="assets/images/myE_FAQ_layout.png" alt="FAQ" class="clickable-img">
-  </section>
+ <img
+      src="assets/images/myE_dash_final.png"
+      alt="Expense Tracking Dashboard"
+      class="clickable-img"
+      data-images="assets/images/myE_dash_final.png, assets/images/original_dash.png, assets/images/myE_dash_it1.png, assets/images/myE_dash_it1_create.png, assets/images/dash_list.png, assets/images/dash_grid.png"
+      data-captions="Expense Tracking Dashboard, Original Dashboard, Dashboard Iteration 1, Dashboard Iteration 1 Create Exp, List View, Grid View"
+    >  </section>
 
   <!-- Results -->
   <!-- <section class="results">
@@ -550,8 +586,6 @@ footer {
       }
     });
 
-    const projectImages = Array.from(document.querySelectorAll(".clickable-img"));
-
     const lightbox = document.createElement("div");
     lightbox.id = "lightbox";
     lightbox.innerHTML = `
@@ -582,20 +616,43 @@ footer {
     const prevBtn = lightbox.querySelector(".lightbox-prev");
     const nextBtn = lightbox.querySelector(".lightbox-next");
 
-    const captions = projectImages.map(function (img) {
-      return img.alt || "Project image";
-    });
-
+    let currentImages = [];
+    let currentCaptions = [];
     let currentIndex = 0;
     let touchStartX = 0;
+
+    function getImageList(img) {
+      if (!img.dataset.images) return [img.getAttribute("src")];
+
+      return img.dataset.images
+        .split(",")
+        .map(function (src) { return src.trim(); })
+        .filter(Boolean);
+    }
+
+    function getCaptionList(img, imageList) {
+      if (img.dataset.captions) {
+        const captionList = img.dataset.captions
+          .split(",")
+          .map(function (text) { return text.trim(); });
+
+        return imageList.map(function (_, index) {
+          return captionList[index] || img.alt || "Project image";
+        });
+      }
+
+      return imageList.map(function () {
+        return img.alt || "Project image";
+      });
+    }
 
     function buildThumbnails() {
       thumbnails.innerHTML = "";
 
-      projectImages.forEach(function (img, index) {
+      currentImages.forEach(function (src, index) {
         const thumb = document.createElement("img");
-        thumb.src = img.src;
-        thumb.alt = img.alt || `Slide ${index + 1}`;
+        thumb.src = src;
+        thumb.alt = currentCaptions[index] || `Slide ${index + 1}`;
 
         thumb.addEventListener("click", function (event) {
           event.stopPropagation();
@@ -613,31 +670,32 @@ footer {
     }
 
     function showImage(index) {
-      if (!projectImages.length) return;
+      if (!currentImages.length) return;
 
-      currentIndex = (index + projectImages.length) % projectImages.length;
-      const selectedImage = projectImages[currentIndex];
+      currentIndex = (index + currentImages.length) % currentImages.length;
 
       lightboxImage.classList.add("fade");
 
       setTimeout(function () {
-        lightboxImage.src = selectedImage.src;
-        lightboxImage.alt = selectedImage.alt || "Expanded project image";
-        counter.textContent = `${currentIndex + 1} / ${projectImages.length}`;
-        caption.textContent = captions[currentIndex] || "";
+        lightboxImage.src = currentImages[currentIndex];
+        lightboxImage.alt = currentCaptions[currentIndex] || "Expanded project image";
+        counter.textContent = `${currentIndex + 1} / ${currentImages.length}`;
+        caption.textContent = currentCaptions[currentIndex] || "";
         updateActiveThumbnail();
         lightboxImage.classList.remove("fade");
       }, 150);
     }
 
-    function openLightbox(index) {
-      if (!projectImages.length) return;
+    function openLightbox(img) {
+      currentImages = getImageList(img);
+      currentCaptions = getCaptionList(img, currentImages);
 
-      if (!thumbnails.children.length) {
-        buildThumbnails();
-      }
+      const clickedSrc = img.getAttribute("src");
+      const clickedIndex = currentImages.indexOf(clickedSrc);
+      currentIndex = clickedIndex >= 0 ? clickedIndex : 0;
 
-      showImage(index);
+      buildThumbnails();
+      showImage(currentIndex);
       lightbox.classList.add("active");
       document.body.style.overflow = "hidden";
     }
@@ -647,9 +705,9 @@ footer {
       document.body.style.overflow = "";
     }
 
-    projectImages.forEach(function (img, index) {
+    document.querySelectorAll(".clickable-img").forEach(function (img) {
       img.addEventListener("click", function () {
-        openLightbox(index);
+        openLightbox(img);
       });
     });
 
