@@ -11,6 +11,16 @@
 
 
   <style>
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
 body {
   font-family: "Dosis", sans-serif;
   font-size: 1.1rem;
@@ -46,11 +56,6 @@ body .hero {
   justify-content: center;
   align-items: center;
   height: 420px;
-}
-
-.hero .swiper-slide img.preview-white {
-  max-width: 85%;
-  max-height: 85%;
 }
 
 .hero .swiper-slide img {
@@ -133,10 +138,6 @@ body .section {
   cursor: zoom-in;
 }
 
-.list {
-  margin-left: 25px;
-}
-
 /* Results */
 .results {
   background: var(--bg-card);
@@ -175,7 +176,7 @@ body .section {
   color: var(--accent-secondary);
 }
 
-/* Lightbox carousel */
+/* Enhanced carousel lightbox */
 #lightbox {
   position: fixed;
   inset: 0;
@@ -202,15 +203,15 @@ body .section {
   display: flex;
   flex-direction: column;
   align-items: center;
-  text-align: center;
+  justify-content: center;
 }
 
 .lightbox-image-wrap {
   width: 100%;
   height: min(680px, 72vh);
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
 }
 
 #lightbox-image {
@@ -233,10 +234,11 @@ body .section {
 #lightbox-caption {
   color: var(--text-primary);
   font-family: "Dosis", sans-serif;
+  text-align: center;
 }
 
 #lightbox-counter {
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.5rem;
   background: rgba(11, 15, 25, 0.75);
   border: 1px solid var(--border-subtle);
   padding: 0.35rem 0.75rem;
@@ -245,7 +247,6 @@ body .section {
 
 #lightbox-caption {
   margin-top: 0.75rem;
-  margin-bottom: 0;
   color: var(--text-secondary);
 }
 
@@ -266,7 +267,7 @@ body .section {
   cursor: pointer;
   opacity: 0.5;
   border: 2px solid transparent;
-  transition: opacity 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+  transition: opacity 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
 }
 
 #lightbox-thumbnails img:hover,
@@ -329,11 +330,11 @@ body .section {
 
   .lightbox-content {
     width: 92vw;
-    max-height: 88vh;
+    max-height: 90vh;
   }
 
   .lightbox-image-wrap {
-    height: 64vh;
+    height: 62vh;
   }
 
   #lightbox .lightbox-prev,
@@ -343,8 +344,8 @@ body .section {
   }
 
   #lightbox-thumbnails img {
-    width: 54px;
-    height: 36px;
+    width: 56px;
+    height: 38px;
   }
 }
 
@@ -451,34 +452,21 @@ footer {
 </section>
 
 
-  <!-- Project Overview -->
-  <!-- <section class="overview" data-aos="fade-up"> -->
-    <!-- <h3>Project Overview</h3> -->
-    <!-- <div class="overview-grid">
-      <div class="overview-item">
-        <h4>Who</h4>
-        <p>Finance Team at Comcast</p>
-      </div>
-      <div class="overview-item">
-        <h4>What</h4>
-        <p>UX research, UI design</p>
-      </div>
-      <div class="overview-item">
-        <h4>Result</h4>
-        <p>Created a functional dashboard and updated site for employees to easily manage their company reimbursements</p>
-      </div>
-    </div>
-  </section> -->
-
   <!-- Process Sections -->
-  <section class="section" data-aos="fade-right">
+  <section class="section">
     <div>
       <h3>Project Overview</h3>
             <p>This was a passion project my friend asked me to design for.</p>
             <p>This app was created with MUAs (makeup artists) and make-up enthusiasts in mind.  We wanted to have a dedicated app for all things make-up that functioned like other social sites allowing posting, commenting and sharing.</p>
             <p>There was also an added feature where users could participate in a make-up challenge and vote for their favorite submission.</p>
     </div>
-    <img src="assets/images/mh_create_layout.png" alt="Create" class="clickable-img">
+    <img
+      src="assets/images/mh_create_layout.png"
+      alt="MUAhub Login"
+      class="clickable-img"
+      data-images="assets/images/mh_login.png, assets/images/mh_create_acct.png, assets/images/mh_profile.png, assets/images/mh_profile_edit.png, assets/images/mh_post.png"
+      data-captions="Login, Create Account, User Profile, Edit Profile, New Post"
+    >
   </section>
 
   <section class="section" data-aos="fade-left">
@@ -512,8 +500,14 @@ footer {
               <li>What would the page look like after they had already voted?</li>
             </ul>
     </div>
-    <img src="assets/images/mh_challenge_layout.png" alt="Challenges" class="clickable-img">
-  </section>
+<img
+      src="assets/images/mh_challenge_layout.png"
+      alt="MUAhub Challenges"
+      class="clickable-img"
+      data-images="assets/images/Challenges.png, assets/images/Challenge_Details.png, assets/images/Challenge_Joined.png, assets/images/Challenges_Enrolled.png, assets/images/Challenge_Submisssion.png, assets/images/Challenges_Vote.png, assets/images/View_Larger.png, assets/images/Vote_Selection.png, assets/images/Vote_Submission.png, assets/images/Vote_Completed.png, assets/images/Challenge_Winner.png"
+      data-captions="Monthly Challenge, Challenge Details, Successful Enrollment, Monthly Challenge Enrolled, Challenge Submisssion, Vote Option, View Submissions Larger, Vote Selection, Successful Vote Submission, Voting Complete, Challenge Winner"
+    >
+    </section>
 
   <section class="section" data-aos="fade-left">
     <div>
@@ -528,8 +522,13 @@ footer {
             <br>
             <p>This project halted at the development phase, but hopefully it will be revisited in the future.</p>
     </div>
-    <img src="assets/images/mh_settings_layout.png" alt="Settings" class="clickable-img">
-  </section>
+<img
+      src="assets/images/mh_settings_layout.png"
+      alt="MUAhub Login"
+      class="clickable-img"
+      data-images="assets/images/Contact_Us.png, assets/images/Blocked_Users.png, assets/images/Followers.png, assets/images/Settings_Privacy.png, assets/images/Account_Settings.png, assets/images/Notifications.png, assets/images/Profile_Post.png, assets/images/Saved_Posts.png, assets/images/View_Own_Posts.png, assets/images/Post_Comment.png, assets/images/Message_Notifications.png, assets/images/Message_Screen.png, assets/images/Search.png, assets/images/mh_Search_Results.png"
+      data-captions="Contact Us, Blocked Users, Followers, Privacy Settings, Account Settings, Notifications, Create Post, Saved Posts, View Own Posts, Post Comment, Message Notifications, Messages, Search, Search Results "
+    >  </section>
 
 
   <!-- Results -->
@@ -548,16 +547,11 @@ footer {
   <footer class="footer">
     <p>© 2025 Pam Tholan. All rights reserved.</p>
   </footer>
-  <!-- Animation Library -->
-  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-
-  <!-- Swiper JS -->
+   <!-- Swiper JS -->
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
 <script>
   document.addEventListener("DOMContentLoaded", function () {
-    AOS.init({ duration: 1000, once: true });
-
     new Swiper(".hero-swiper", {
       loop: true,
       autoplay: {
@@ -574,8 +568,6 @@ footer {
       }
     });
 
-    const projectImages = Array.from(document.querySelectorAll(".clickable-img"));
-
     const lightbox = document.createElement("div");
     lightbox.id = "lightbox";
     lightbox.innerHTML = `
@@ -583,14 +575,14 @@ footer {
       <button class="lightbox-prev" aria-label="Previous image">&#10094;</button>
 
       <div class="lightbox-content">
-        <p id="lightbox-counter" aria-live="polite"></p>
+        <div id="lightbox-counter" aria-live="polite"></div>
 
         <div class="lightbox-image-wrap">
           <img id="lightbox-image" src="" alt="Expanded project image">
         </div>
 
-        <p id="lightbox-caption"></p>
-        <div id="lightbox-thumbnails" aria-label="Project image thumbnails"></div>
+        <div id="lightbox-caption"></div>
+        <div id="lightbox-thumbnails" aria-label="Image thumbnails"></div>
       </div>
 
       <button class="lightbox-next" aria-label="Next image">&#10095;</button>
@@ -606,10 +598,35 @@ footer {
     const prevBtn = lightbox.querySelector(".lightbox-prev");
     const nextBtn = lightbox.querySelector(".lightbox-next");
 
-    let currentImages = projectImages.map(img => img.getAttribute("src"));
-    let currentCaptions = projectImages.map(img => img.getAttribute("alt") || "Project image");
+    let currentImages = [];
+    let currentCaptions = [];
     let currentIndex = 0;
     let touchStartX = 0;
+
+    function getImageList(img) {
+      if (!img.dataset.images) return [img.getAttribute("src")];
+
+      return img.dataset.images
+        .split(",")
+        .map(function (src) { return src.trim(); })
+        .filter(Boolean);
+    }
+
+    function getCaptionList(img, imageList) {
+      if (img.dataset.captions) {
+        const captionList = img.dataset.captions
+          .split(",")
+          .map(function (text) { return text.trim(); });
+
+        return imageList.map(function (_, index) {
+          return captionList[index] || img.alt || "Project image";
+        });
+      }
+
+      return imageList.map(function () {
+        return img.alt || "Project image";
+      });
+    }
 
     function buildThumbnails() {
       thumbnails.innerHTML = "";
@@ -628,7 +645,17 @@ footer {
       });
     }
 
-    function updateLightbox() {
+    function updateActiveThumbnail() {
+      thumbnails.querySelectorAll("img").forEach(function (thumb, index) {
+        thumb.classList.toggle("active", index === currentIndex);
+      });
+    }
+
+    function showImage(index) {
+      if (!currentImages.length) return;
+
+      currentIndex = (index + currentImages.length) % currentImages.length;
+
       lightboxImage.classList.add("fade");
 
       setTimeout(function () {
@@ -636,25 +663,21 @@ footer {
         lightboxImage.alt = currentCaptions[currentIndex] || "Expanded project image";
         counter.textContent = `${currentIndex + 1} / ${currentImages.length}`;
         caption.textContent = currentCaptions[currentIndex] || "";
-
-        thumbnails.querySelectorAll("img").forEach(function (thumb, index) {
-          thumb.classList.toggle("active", index === currentIndex);
-        });
-
+        updateActiveThumbnail();
         lightboxImage.classList.remove("fade");
       }, 150);
     }
 
-    function showImage(index) {
-      if (!currentImages.length) return;
-      currentIndex = (index + currentImages.length) % currentImages.length;
-      updateLightbox();
-    }
+    function openLightbox(img) {
+      currentImages = getImageList(img);
+      currentCaptions = getCaptionList(img, currentImages);
 
-    function openLightbox(index) {
-      currentIndex = index;
+      const clickedSrc = img.getAttribute("src");
+      const clickedIndex = currentImages.indexOf(clickedSrc);
+      currentIndex = clickedIndex >= 0 ? clickedIndex : 0;
+
       buildThumbnails();
-      updateLightbox();
+      showImage(currentIndex);
       lightbox.classList.add("active");
       document.body.style.overflow = "hidden";
     }
@@ -664,11 +687,13 @@ footer {
       document.body.style.overflow = "";
     }
 
-    projectImages.forEach(function (img, index) {
+    document.querySelectorAll(".clickable-img").forEach(function (img) {
       img.addEventListener("click", function () {
-        openLightbox(index);
+        openLightbox(img);
       });
     });
+
+    closeBtn.addEventListener("click", closeLightbox);
 
     nextBtn.addEventListener("click", function (event) {
       event.stopPropagation();
@@ -679,8 +704,6 @@ footer {
       event.stopPropagation();
       showImage(currentIndex - 1);
     });
-
-    closeBtn.addEventListener("click", closeLightbox);
 
     lightbox.addEventListener("click", function (event) {
       if (event.target === lightbox) {
