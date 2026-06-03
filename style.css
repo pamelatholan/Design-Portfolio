@@ -38,6 +38,7 @@ body {
   flex-direction: column;
   background: var(--bg-main);
   color: var(--text-primary);
+  padding-top: 72px;
 }
 
 /* Typography overrides */
@@ -57,9 +58,11 @@ body {
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--border-subtle);
   padding: 1rem;
-  position: sticky; /* or fixed if you want it always visible */
+  position: fixed;
   top: 0;
-  z-index: 9999;
+  left: 0;
+  width: 100%;
+  z-index: 999999;
 }
 
 .nav-container {
@@ -115,7 +118,7 @@ nav a:hover {
 /* ===== GLOW EFFECT ===== */
 .glow-section {
   position: relative;
-  z-index: 1;
+  z-index: 0;
 }
 
 .glow-section::before, .glow-section::after {
@@ -243,24 +246,32 @@ nav a:hover {
   nav {
     display: none;
     flex-direction: column;
-    background: var(--bg-section);
-    position: absolute;
-    top: 100%;
+    position: fixed;
+    top: 72px;
     left: 0;
     right: 0;
     width: 100%;
-    text-align: center;
-    z-index: 10001;
     background: var(--bg-section);
+    text-align: center;
+    z-index: 999998;
+    padding: 1rem 0;
     border-bottom: 1px solid var(--border-subtle);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
   }
 
   nav.active {
     display: flex;
   }
 
+  nav a {
+    display: block;
+    padding: 1rem;
+  }
+
   .hamburger {
     display: block;
+    position: relative;
+    z-index: 1000000;
   }
 
   .skills-section {
