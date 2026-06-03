@@ -515,6 +515,13 @@ trigger.addEventListener('click', () => {
   customFilter.classList.toggle('open');
 });
 
+const hamburger = document.getElementById("hamburger");
+const navLinks = document.getElementById("nav-links");
+
+hamburger.addEventListener("click", () => {
+  navLinks.classList.toggle("active");
+});
+
 options.forEach(option => {
   option.addEventListener('click', () => {
     const value = option.dataset.value;
