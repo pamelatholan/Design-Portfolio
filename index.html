@@ -5,19 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>UX/UI Portfolio</title>
   <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&family=Megrim&family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css?v2">
-
-<!-- <style>
-
-.hero {
-  background-image: url('assets/images/new2.svg'); /* Path to the image file */
-      background-size: cover; /* Make sure the image covers the entire screen */
-      background-position: center center; /* Center the image */
-      background-repeat: no-repeat; /* Prevent the image from repeating */
-}
-
-</style> -->
-
+  <link rel="stylesheet" href="assets/css/style.css?v=3">
 </head>
 <body>
 
@@ -32,7 +20,7 @@
         <a href="portfolio_resume.html">Resume</a>
         <a href="contact.html">Contact</a>
       </nav>
-      <div class="hamburger" id="hamburger">&#9776;</div>
+      <div class="hamburger" id="hamburger" aria-label="Open menu" role="button" tabindex="0">&#9776;</div>
     </div>
   </header>
 
@@ -44,53 +32,106 @@
 
   <!-- About Section -->
   <section id="about" class="section">
-    <!-- <h2>About</h2> -->
     <h1 class="about">I'm passionate about ART and TECHNOLOGY</h1>
     <br>
     <p class="bio">As a Project Manager turned UX/UI Designer, I love bridging the gap between people and technology. 
       My background in graphic design and web development gives me a unique perspective on how thoughtful design and strategic execution come 
       together to create intuitive digital experiences.</p>
-<br>
+    <br>
     <p class="bio">After earning my degree in Graphic Design, I spent several years building a career in project management, where I learned 
       how to balance creativity with business needs. Later, completing a full stack web development bootcamp reignited my passion for hands-on 
       design and helped me connect my technical and creative sides.</p>
-<br>
-      <p class="bio">At Comcast, I’ve led projects that prioritize user experience while meeting organizational goals, and I’ve learned the 
-        value of empathy, collaboration, and iteration in every product decision.</p>
-<br>
-      <p class="bio">I coded this portfolio with the aid of ChatGPT as both a creative 
-        challenge and a statement: design should be as functional as it is beautiful. My goal is to continue designing experiences that feel effortless, meaningful, and human.</p>
+    <br>
+    <p class="bio">At Comcast, I’ve led projects that prioritize user experience while meeting organizational goals, and I’ve learned the 
+      value of empathy, collaboration, and iteration in every product decision.</p>
+    <br>
+    <p class="bio">I coded this portfolio with the aid of ChatGPT as both a creative 
+      challenge and a statement: design should be as functional as it is beautiful. My goal is to continue designing experiences that feel effortless, meaningful, and human.</p>
   </section>
- <!-- Skills Section -->
-        <div class="about-container">
-          <h2>Skills</h2>
-        <div class="skills-section">
-          <div class="skill-box">
-                <h3 class="title">Web Development</h3>
-                <p>HTML, CSS, JavaScript, React</p>
-            </div>
-            <div class="skill-box">
-                <h3 class="title">UX/UI Design</h3>
-                <p>Wireframing, Prototyping, User Research, Figma, Adobe XD</p>
-            </div>
-            <div class="skill-box">
-                <h3 class="title">Graphic Design</h3>
-                <p>Photoshop, Illustrator, ProCreate</p>
-            </div>
-        </div>
-        <br><br>
+
+  <!-- Skills Section -->
+  <div class="about-container">
+    <h2>Skills</h2>
+    <div class="skills-section">
+      <div class="skill-box">
+        <h3 class="title">Web Development</h3>
+        <p>HTML, CSS, JavaScript, React</p>
+      </div>
+      <div class="skill-box">
+        <h3 class="title">UX/UI Design</h3>
+        <p>Wireframing, Prototyping, User Research, Figma, Adobe XD</p>
+      </div>
+      <div class="skill-box">
+        <h3 class="title">Graphic Design</h3>
+        <p>Photoshop, Illustrator, ProCreate</p>
+      </div>
+    </div>
+  </div>
+
+  <br><br>
+
   <!-- Footer -->
   <footer class="footer">
     <p>© 2025 Pam Tholan. All rights reserved.</p>
   </footer>
 
   <script>
-    // Hamburger menu toggle
     const hamburger = document.getElementById("hamburger");
     const navLinks = document.getElementById("nav-links");
 
-    hamburger.addEventListener("click", () => {
-      navLinks.classList.toggle("active");
+    function openMenu() {
+      navLinks.classList.add("active");
+
+      // Inline styles intentionally override any stubborn old/mobile CSS.
+      navLinks.style.display = "flex";
+      navLinks.style.flexDirection = "column";
+      navLinks.style.position = "fixed";
+      navLinks.style.top = "68px";
+      navLinks.style.left = "0";
+      navLinks.style.right = "0";
+      navLinks.style.width = "100vw";
+      navLinks.style.background = "#0F1424";
+      navLinks.style.zIndex = "2147483647";
+      navLinks.style.textAlign = "center";
+      navLinks.style.padding = "1rem 0";
+      navLinks.style.gap = "0";
+      navLinks.style.boxShadow = "0 14px 35px rgba(0,0,0,0.75)";
+      navLinks.style.pointerEvents = "auto";
+
+      hamburger.setAttribute("aria-label", "Close menu");
+    }
+
+    function closeMenu() {
+      navLinks.classList.remove("active");
+      navLinks.removeAttribute("style");
+      hamburger.setAttribute("aria-label", "Open menu");
+    }
+
+    function toggleMenu() {
+      if (navLinks.classList.contains("active")) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
+    }
+
+    hamburger.addEventListener("click", toggleMenu);
+
+    hamburger.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        toggleMenu();
+      }
+    });
+
+    navLinks.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", closeMenu);
+    });
+
+    window.addEventListener("resize", () => {
+      if (window.innerWidth > 900) {
+        closeMenu();
+      }
     });
   </script>
 
